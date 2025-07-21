@@ -9,7 +9,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\Admin\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\PasswordResetLinkController; // Import controller ini
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\LayananController; // Tambahkan ini
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,16 @@ Route::get('/profil-publik', fn() => view('profil'))->name('profil.publik');
 Route::get('/inovasi', [InovasiController::class, 'index'])->name('inovasi.index');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
-
+// --- RUTE LAYANAN ---
+Route::prefix('layanan')->name('layanan.')->group(function () {
+    Route::get('/pengaduan', [LayananController::class, 'pengaduan'])->name('pengaduan');
+    Route::get('/bpkb-stnk', [LayananController::class, 'bpkbStnk'])->name('bpkb_stnk');
+    Route::get('/izin-keramaian', [LayananController::class, 'izinKeramaian'])->name('izin_keramaian');
+    Route::get('/pengawalan', [LayananController::class, 'pengawalan'])->name('pengawalan');
+    Route::get('/besuk-tahanan', [LayananController::class, 'besukTahanan'])->name('besuk_tahanan');
+    Route::get('/sidik-jari', [LayananController::class, 'sidikJari'])->name('sidik_jari');
+    Route::get('/sp2hp', [LayananController::class, 'sp2hp'])->name('sp2hp');
+});
 // --- SEMUA RUTE ADMIN DI SATU TEMPAT ---
 Route::prefix('admin')->name('admin.')->group(function () {
 

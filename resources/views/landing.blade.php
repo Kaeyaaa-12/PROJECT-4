@@ -108,7 +108,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">BPKB & STNK</h3>
                         <p class="text-gray-500 mt-2">Prosedur Pengurusan BPKB & STNK</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.bpkb_stnk') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -123,7 +123,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Izin Keramaian</h3>
                         <p class="text-gray-500 mt-2">Prosedur Pengajuan Izin Keramaian</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.izin_keramaian') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -139,7 +139,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Pengawalan</h3>
                         <p class="text-gray-500 mt-2">Prosedur Permintaan Pengawalan</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.pengawalan') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -154,7 +154,8 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Layanan SIM</h3>
                         <p class="text-gray-500 mt-2">Pembuatan & Perpanjangan SIM</p>
-                        <a href="#"
+                        <a href="https://yanlikpolrestulung.wixsite.com/simtulungagung/post/satpas-sim-polres-tulungagung"
+                            target="_blank"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
 
@@ -171,7 +172,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Layanan SKCK</h3>
                         <p class="text-gray-500 mt-2">Prosedur Pembuatan SKCK</p>
-                        <a href="#"
+                        <a href="https://skcktulungagung.wixsite.com/home" target="_blank"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -186,7 +187,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Besuk Tahanan</h3>
                         <p class="text-gray-500 mt-2">Prosedur dan Jadwal Besuk</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.besuk_tahanan') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -201,7 +202,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">SPKT</h3>
                         <p class="text-gray-500 mt-2">Laporan & Pengaduan Masyarakat</p>
-                        <a href="#"
+                        <a href="https://spkttulungagung.wixsite.com/home" target="_blank"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -216,7 +217,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Sidik Jari</h3>
                         <p class="text-gray-500 mt-2">Pelayanan Identifikasi Sidik Jari</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.sidik_jari') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
 
@@ -233,7 +234,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">SP2HP</h3>
                         <p class="text-gray-500 mt-2">Cek Perkembangan Hasil Penyidikan</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.sp2hp') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -248,7 +249,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Pengaduan</h3>
                         <p class="text-gray-500 mt-2">Layanan Pengaduan Propam</p>
-                        <a href="#"
+                        <a href="{{ route('layanan.pengaduan') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                 </div>
