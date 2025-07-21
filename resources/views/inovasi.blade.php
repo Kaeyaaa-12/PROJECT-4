@@ -6,53 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inovasi - Polres Tulungagung</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .hero-bg {
             background-image: url("{{ asset('assets/images/Background.png') }}");
         }
+
+        /* Memberi ruang di body untuk fixed header yang lebih besar */
+        body {
+            /* Perkiraan tinggi header baru: sekitar 148px */
+            padding-top: 148px;
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="bg-gray-100 font-sans">
+    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center border-b border-gray-600 pb-4">
+                <div class="flex items-center space-x-5">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-16">
+                    <div>
+                        <h1 class="text-base font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
+                        <h2 class="text-sm uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
+                    </div>
+                </div>
+                <div class="text-right text-sm hidden md:block">
+                    <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
+                    <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
+                </div>
+            </div>
+            <nav class="flex justify-center items-center pt-4">
+                <ul class="flex space-x-8 text-base font-semibold">
+                    <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                    <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                    <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+
+                    <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                    <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                    <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <div>
 
-        <header class="bg-black bg-opacity-70 text-white absolute top-0 left-0 right-0 z-20">
-            <div class="container mx-auto px-4 py-2">
-                <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                    <div class="flex items-center space-x-3">
-                        <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                        <div>
-                            <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
-                            <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
-                        </div>
-                    </div>
-                    <div class="text-right text-xs hidden md:block">
-                        <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
-                        <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
-                    </div>
-                </div>
-
-                <nav class="flex justify-center items-center pt-2">
-                    <ul class="flex space-x-8 text-base font-semibold">
-                        <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
-                        <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
-                        <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
-                        <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
-                        <li><a href="{{ route('inovasi.index') }}"
-                                class="hover:text-yellow-400 text-yellow-400">INOVASI</a></li>
-                        <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-        <main class="relative h-screen">
+        <main class="relative h-screen -mt-[148px]">
             <div class="h-full flex items-center justify-center hero-bg bg-cover bg-center">
                 <div class="absolute inset-0 bg-black opacity-40"></div>
 
-                <div class="relative z-10 container mx-auto px-4 text-center text-white">
+                <div class="relative z-10 container mx-auto px-4 text-center text-white" data-aos="fade-in">
                     <h1 class="text-4xl lg:text-5xl font-bold uppercase">Inovasi Polres Tulungagung</h1>
                     <p class="mt-4 text-lg lg:text-xl max-w-3xl mx-auto">Berbagai inovasi layanan publik untuk kemudahan
                         dan kenyamanan masyarakat Kabupaten Tulungagung.</p>
@@ -63,12 +68,12 @@
 
         <section id="daftar-inovasi" class="bg-white py-20">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-3xl font-bold text-gray-800 uppercase">Daftar Inovasi Unggulan</h2>
                     <div class="w-24 h-1 bg-yellow-400 mx-auto mt-2"></div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">01</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">APLIKASI SIM CERIA</h3>
@@ -90,7 +95,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20" data-aos="fade-left">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">02</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">APLIKASI SIM ASTUTI</h3>
@@ -109,7 +114,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">03</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">POS DIGITAL ASTUTI</h3>
@@ -129,7 +134,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20" data-aos="fade-left">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">04</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">ASTUTI MOBILE</h3>
@@ -149,7 +154,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">05</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">TACS</h3>
@@ -168,7 +173,8 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20"
+                    data-aos="fade-left">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">06</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">TAR</h3>
@@ -229,7 +235,8 @@
                                     class="fab fa-facebook-f fa-lg"></i></a>
                             <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-twitter fa-lg"></i></a>
-                            <a href="#" aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
+                            <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-instagram fa-lg"></i></a>
                             <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-youtube fa-lg"></i></a>
@@ -242,7 +249,15 @@
             </div>
         </footer>
     </div>
-
+    {{-- Menambahkan AOS JS --}}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            duration: 800, // durasi animasi dalam ms
+            once: false, // apakah animasi hanya terjadi sekali
+        });
+    </script>
 </body>
 
 </html>

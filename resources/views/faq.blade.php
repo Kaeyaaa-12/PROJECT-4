@@ -6,52 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Polres Tulungagung</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .hero-bg {
             background-image: url("{{ asset('assets/images/Background.png') }}");
         }
+
+        /* Memberi ruang di body untuk fixed header yang lebih besar */
+        body {
+            /* Perkiraan tinggi header baru: sekitar 148px */
+            padding-top: 148px;
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="bg-gray-100 font-sans">
+    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center border-b border-gray-600 pb-4">
+                <div class="flex items-center space-x-5">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-16">
+                    <div>
+                        <h1 class="text-base font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
+                        <h2 class="text-sm uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
+                    </div>
+                </div>
+                <div class="text-right text-sm hidden md:block">
+                    <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
+                    <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
+                </div>
+            </div>
+            <nav class="flex justify-center items-center pt-4">
+                <ul class="flex space-x-8 text-base font-semibold">
+                    <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                    <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                    <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
 
+                    <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                    <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                    <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div>
 
-        <main class="relative h-screen">
-            <header class="bg-black bg-opacity-70 text-white absolute top-0 left-0 right-0 z-20">
-                <div class="container mx-auto px-4 py-2">
-                    <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                        <div class="flex items-center space-x-3">
-                            <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                            <div>
-                                <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
-                                <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
-                            </div>
-                        </div>
-                        <div class="text-right text-xs hidden md:block">
-                            <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
-                            <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
-                        </div>
-                    </div>
-
-                    <nav class="flex justify-center items-center pt-2">
-                        <ul class="flex space-x-8 text-base font-semibold">
-                            <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
-                            <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
-                            <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
-                            <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
-                            <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
-                            <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-
+        <main class="relative h-screen -mt-[148px]">
             <div class="h-full flex items-center justify-center hero-bg bg-cover bg-center">
                 <div class="absolute inset-0 bg-black opacity-40"></div>
 
-                <div class="relative z-10 container mx-auto px-4 text-center text-white">
+                <div class="relative z-10 container mx-auto px-4 text-center text-white" data-aos="fade-in">
                     <h1 class="text-4xl lg:text-5xl font-bold uppercase">Frequently Asked Questions</h1>
                     <p class="mt-4 text-lg lg:text-xl max-w-3xl mx-auto">Temukan jawaban atas pertanyaan yang sering
                         diajukan terkait layanan dan informasi di Polres Tulungagung.</p>
@@ -65,17 +70,15 @@
 
             <div class="container mx-auto px-4 relative">
 
-                <div class="text-center mb-16">
+                <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 uppercase tracking-wide">Pusat Informasi &
                         Bantuan</h2>
-                    <p class="text-gray-600 mt-3 max-w-3xl mx-auto text-lg">Panduan lengkap dan jawaban terperinci atas
-                        pertanyaan umum seputar layanan Kepolisian Resor Tulungagung.</p>
                 </div>
 
                 <div class="max-w-4xl mx-auto space-y-6">
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="100">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
                                 <h3 class="font-semibold text-gray-900 text-lg">Bagaimana alur lengkap pengurusan SKCK
@@ -125,8 +128,8 @@
                         </details>
                     </div>
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="200">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
                                 <h3 class="font-semibold text-gray-900 text-lg">Saya kehilangan KTP/ATM, apa saja yang
@@ -164,8 +167,8 @@
                         </details>
                     </div>
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="300">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
                                 <h3 class="font-semibold text-gray-900 text-lg">Apa saja tahapan tes untuk mendapatkan
@@ -207,11 +210,12 @@
                         </details>
                     </div>
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="400">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
-                                <h3 class="font-semibold text-gray-900 text-lg">Kapan saya harus menelepon 110 dan kapan
+                                <h3 class="font-semibold text-gray-900 text-lg">Kapan saya harus menelepon 110 dan
+                                    kapan
                                     harus datang ke kantor polisi?</h3>
                                 <div
                                     class="text-yellow-500 transform transition-transform duration-300 group-open:-rotate-180">
@@ -244,8 +248,8 @@
                         </details>
                     </div>
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="500">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
                                 <h3 class="font-semibold text-gray-900 text-lg">Bagaimana cara cek dan bayar denda
@@ -288,8 +292,8 @@
                         </details>
                     </div>
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="600">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
                                 <h3 class="font-semibold text-gray-900 text-lg">Saya ingin mengadakan acara
@@ -329,8 +333,8 @@
                         </details>
                     </div>
 
-                    <div
-                        class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400">
+                    <div class="group bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-yellow-400"
+                        data-aos="fade-up" data-aos-delay="700">
                         <details class="overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer">
                                 <h3 class="font-semibold text-gray-900 text-lg">Siapakah Bhabinkamtibmas dan bagaimana
@@ -414,7 +418,8 @@
                                     class="fab fa-facebook-f fa-lg"></i></a>
                             <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-twitter fa-lg"></i></a>
-                            <a href="#" aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
+                            <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-instagram fa-lg"></i></a>
                             <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-youtube fa-lg"></i></a>
@@ -427,7 +432,15 @@
             </div>
         </footer>
     </div>
-
+    {{-- Menambahkan AOS JS --}}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            duration: 800, // durasi animasi dalam ms
+            once: false, // apakah animasi hanya terjadi sekali
+        });
+    </script>
 </body>
 
 </html>

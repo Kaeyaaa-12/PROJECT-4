@@ -6,52 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - Polres Tulungagung</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .hero-bg {
             background-image: url("{{ asset('assets/images/Background.png') }}");
         }
+
+        /* Memberi ruang di body untuk fixed header yang lebih besar */
+        body {
+            /* Perkiraan tinggi header baru: sekitar 148px */
+            padding-top: 148px;
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="bg-gray-100 font-sans">
+    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center border-b border-gray-600 pb-4">
+                <div class="flex items-center space-x-5">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-16">
+                    <div>
+                        <h1 class="text-base font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
+                        <h2 class="text-sm uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
+                    </div>
+                </div>
+                <div class="text-right text-sm hidden md:block">
+                    <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
+                    <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
+                </div>
+            </div>
+            <nav class="flex justify-center items-center pt-4">
+                <ul class="flex space-x-8 text-base font-semibold">
+                    <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                    <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                    <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+
+                    <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                    <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                    <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <div>
 
-        <main class="relative h-screen">
-            <header class="bg-black bg-opacity-70 text-white absolute top-0 left-0 right-0 z-20">
-                <div class="container mx-auto px-4 py-2">
-                    <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                        <div class="flex items-center space-x-3">
-                            <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                            <div>
-                                <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
-                                <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
-                            </div>
-                        </div>
-                        <div class="text-right text-xs hidden md:block">
-                            <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
-                            <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
-                        </div>
-                    </div>
-
-                    <nav class="flex justify-center items-center pt-2">
-                        <ul class="flex space-x-8 text-base font-semibold">
-                            <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
-                            <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
-                            <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
-                            <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
-                            <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
-                            <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-
+        <main class="relative h-screen -mt-[148px]">
             <div class="h-full flex items-center justify-center hero-bg bg-cover bg-center">
                 <div class="absolute inset-0 bg-black opacity-40"></div>
 
-                <div class="relative z-10 container mx-auto px-4 text-center text-white">
+                <div class="relative z-10 container mx-auto px-4 text-center text-white" data-aos="fade-in">
                     <h1 class="text-4xl lg:text-5xl font-bold uppercase">Profil Polres Tulungagung</h1>
                     <p class="mt-4 text-lg lg:text-xl max-w-3xl mx-auto">Mengenal lebih dekat Visi, Misi, dan
                         Struktur Organisasi Kepolisian Resor Tulungagung.</p>
@@ -63,7 +69,7 @@
         <section id="visi-misi" class="bg-white py-20">
             <div class="container mx-auto px-6">
 
-                <div class="flex flex-wrap items-center mb-16">
+                <div class="flex flex-wrap items-center mb-16" data-aos="fade-right">
                     <div class="w-full md:w-1/2 p-4">
                         <img src="{{ asset('assets/images/background.png') }}" alt="Gedung Polres Tulungagung"
                             class="rounded-lg shadow-xl w-full">
@@ -79,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-wrap items-start md:flex-row-reverse">
+                <div class="flex flex-wrap items-start md:flex-row-reverse" data-aos="fade-left">
                     <div class="w-full md:w-1/2 p-4">
                         <div class="grid grid-cols-2 gap-4">
                             <img src="{{ asset('assets/images/posterkapolres.jpg') }}" alt="Poster Kapolres Tulungagung"
@@ -165,7 +171,7 @@
 
         <section id="satuan-kerja" class="bg-gray-100 py-20">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-12">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <h2 class="text-3xl font-bold text-gray-800 uppercase">Seksi, Bagian, dan Satuan Polres Tulungagung
                     </h2>
                     <div class="w-24 h-1 bg-yellow-400 mx-auto mt-2"></div>
@@ -173,10 +179,10 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/BAGOPS.png') }}" alt="Logo BAGOPS"
+                            <img src="{{ asset('assets/images/Logo/BAGOPS.jpg') }}" alt="Logo BAGOPS"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">BAG OPS</h3>
@@ -186,10 +192,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/BAGSDM.png') }}" alt="Logo BAGSDM"
+                            <img src="{{ asset('assets/images/Logo/BAGSDM.jpg') }}" alt="Logo BAGSDM"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">BAG SDM</h3>
@@ -199,10 +205,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-satlantas.png') }}" alt="Logo Satlantas"
+                            <img src="{{ asset('assets/images/Logo/BAGREN.png') }}" alt="Logo BAGREN"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">BAG REN</h3>
@@ -211,10 +217,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="400">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-satintelkam.png') }}" alt="Logo Satintelkam"
+                            <img src="{{ asset('assets/images/Logo/SATINTELKAM.png') }}" alt="Logo Satintelkam"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT INTELKAM</h3>
@@ -223,10 +229,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-samapta.png') }}" alt="Logo Samapta"
+                            <img src="{{ asset('assets/images/Logo/SATRESKRIM.png') }}" alt="Logo SatReskrim"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT RESKRIM</h3>
@@ -235,10 +241,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-satnarkoba.png') }}" alt="Logo Satnarkoba"
+                            <img src="{{ asset('assets/images/Logo/SATNARKOBA.png') }}" alt="Logo Satnarkoba"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT NARKOBA</h3>
@@ -247,10 +253,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-propam.png') }}" alt="Logo Propam"
+                            <img src="{{ asset('assets/images/Logo/SATLANTAS.png') }}" alt="Logo Satlantas"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT LANTAS</h3>
@@ -259,10 +265,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="400">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-humas.png') }}" alt="Logo Humas"
+                            <img src="{{ asset('assets/images/Logo/SATSAMAPTA.png') }}" alt="Logo Samapta"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT SAMAPTA</h3>
@@ -271,10 +277,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-samapta.png') }}" alt="Logo Samapta"
+                            <img src="{{ asset('assets/images/Logo/SATBINMAS.png') }}" alt="Logo SatBinmas"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT BINMAS</h3>
@@ -283,10 +289,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-satnarkoba.png') }}" alt="Logo Satnarkoba"
+                            <img src="{{ asset('assets/images/Logo/SATTAHTI.png') }}" alt="Logo SatTahti"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT TAHTI</h3>
@@ -295,10 +301,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-propam.png') }}" alt="Logo Propam"
+                            <img src="{{ asset('assets/images/Logo/SIWAS.png') }}" alt="Logo Siwas"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI WAS</h3>
@@ -307,10 +313,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="400">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-humas.png') }}" alt="Logo Humas"
+                            <img src="{{ asset('assets/images/Logo/SIPROPAM.png') }}" alt="Logo SiPropam"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI PROPAM</h3>
@@ -319,10 +325,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-samapta.png') }}" alt="Logo Samapta"
+                            <img src="{{ asset('assets/images/Logo/SIHUMAS.png') }}" alt="Logo SiHumas"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI HUMAS</h3>
@@ -331,10 +337,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-satnarkoba.png') }}" alt="Logo Satnarkoba"
+                            <img src="{{ asset('assets/images/Logo/SIKUM.png') }}" alt="Logo SIKUM"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI KUM</h3>
@@ -342,10 +348,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-propam.png') }}" alt="Logo Propam"
+                            <img src="{{ asset('assets/images/Logo/SITIK.png') }}" alt="Logo SITIK"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI TIK</h3>
@@ -354,10 +360,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="400">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-humas.png') }}" alt="Logo Humas"
+                            <img src="{{ asset('assets/images/Logo/SIUM.png') }}" alt="Logo SIUM"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SIUM</h3>
@@ -366,10 +372,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="100">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-satnarkoba.png') }}" alt="Logo Satnarkoba"
+                            <img src="{{ asset('assets/images/Logo/SIKEU.png') }}" alt="Logo SIKEU"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI KEU</h3>
@@ -378,10 +384,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="200">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-propam.png') }}" alt="Logo Propam"
+                            <img src="{{ asset('assets/images/Logo/SIDOKKES.png') }}" alt="Logo SIDOKKES"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI DOKKES</h3>
@@ -390,10 +396,10 @@
                         <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+                        data-aos="fade-up" data-aos-delay="300">
                         <div class="mb-4">
-                            <img src="{{ asset('assets/images/logo-humas.png') }}" alt="Logo Humas"
+                            <img src="{{ asset('assets/images/Logo/SPKT.jpg') }}" alt="Logo SPKT"
                                 class="h-41 w-41 object-contain">
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SPKT</h3>
@@ -446,7 +452,8 @@
                                     class="fab fa-facebook-f fa-lg"></i></a>
                             <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-twitter fa-lg"></i></a>
-                            <a href="#" aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
+                            <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-instagram fa-lg"></i></a>
                             <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400"><i
                                     class="fab fa-youtube fa-lg"></i></a>
@@ -459,7 +466,15 @@
             </div>
         </footer>
     </div>
-
+    {{-- Menambahkan AOS JS --}}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            duration: 800, // durasi animasi dalam ms
+            once: false, // apakah animasi hanya terjadi sekali
+        });
+    </script>
 </body>
 
 </html>
