@@ -27,6 +27,7 @@
             <div class="flex justify-between items-center border-b border-gray-600 pb-4">
                 <div class="flex items-center space-x-5">
                     <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-16">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-16">
                     <div>
                         <h1 class="text-base font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-sm uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
@@ -88,13 +89,14 @@
                 <div class="flex flex-wrap items-start md:flex-row-reverse" data-aos="fade-left">
                     <div class="w-full md:w-1/2 p-4">
                         <div class="grid grid-cols-2 gap-4">
-                            <img src="{{ asset('assets/images/posterkapolres.jpg') }}" alt="Poster Kapolres Tulungagung"
+                            <img src="{{ asset('assets/images/posterkapolres.jpg') }}"
+                                alt="Poster Kapolres Tulungagung"
                                 class="w-full h-full object-cover rounded-lg shadow-xl">
-                            <img src="{{ asset('assets/images/misi_gambar_2.jpg') }}" alt="Kegiatan patroli malam"
+                            <img src="{{ asset('assets/images/patrolimalam.png') }}" alt="Kegiatan patroli malam"
                                 class="w-full h-full object-cover rounded-lg shadow-xl">
-                            <img src="{{ asset('assets/images/misi_gambar_3.jpg') }}" alt="Pemberian penghargaan"
-                                class="w-full h-full object-cover rounded-lg shadow-xl">
-                            <img src="{{ asset('assets/images/misi_gambar_4.jpg') }}"
+                            <img src="{{ asset('assets/images/pemberianpenghargaan.png') }}"
+                                alt="Pemberian penghargaan" class="w-full h-full object-cover rounded-lg shadow-xl">
+                            <img src="{{ asset('assets/images/pengamanankegiatanmasyarakat.png') }}"
                                 alt="Pengamanan kegiatan masyarakat"
                                 class="w-full h-full object-cover rounded-lg shadow-xl">
                         </div>
