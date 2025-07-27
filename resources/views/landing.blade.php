@@ -155,8 +155,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Layanan SIM</h3>
                         <p class="text-gray-500 mt-2">Pembuatan & Perpanjangan SIM</p>
-                        <a href="https://yanlikpolrestulung.wixsite.com/simtulungagung/post/satpas-sim-polres-tulungagung"
-                            target="_blank"
+                        <a href="{{ route('layanan.sim') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
 
@@ -173,7 +172,8 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Layanan SKCK</h3>
                         <p class="text-gray-500 mt-2">Prosedur Pembuatan SKCK</p>
-                        <a href="https://skcktulungagung.wixsite.com/home" target="_blank"
+                        {{-- Link diubah ke rute internal --}}
+                        <a href="{{ route('layanan.skck') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"

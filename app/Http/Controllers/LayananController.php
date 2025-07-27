@@ -40,4 +40,15 @@ class LayananController extends Controller
     {
         return view('layanan.sp2hp');
     }
+
+    public function sim()
+    {
+        return view('layanan.sim');
+    }
+
+    // Method baru untuk layanan SKCK
+    public function skck()
+    {
+        return view('layanan.skck');
+    }
 }

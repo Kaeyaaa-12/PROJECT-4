@@ -33,6 +33,8 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/besuk-tahanan', [LayananController::class, 'besukTahanan'])->name('besuk_tahanan');
     Route::get('/sidik-jari', [LayananController::class, 'sidikJari'])->name('sidik_jari');
     Route::get('/sp2hp', [LayananController::class, 'sp2hp'])->name('sp2hp');
+    Route::get('/sim', [LayananController::class, 'sim'])->name('sim');
+    Route::get('/skck', [LayananController::class, 'skck'])->name('skck');
 });
 // --- SEMUA RUTE ADMIN DI SATU TEMPAT ---
 Route::prefix('admin')->name('admin.')->group(function () {

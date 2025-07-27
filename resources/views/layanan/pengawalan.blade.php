@@ -21,6 +21,7 @@
             <div class="flex justify-between items-center border-b border-gray-600 pb-4">
                 <div class="flex items-center space-x-5">
                     <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-16">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-16">
                     <div>
                         <h1 class="text-base font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-sm uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
