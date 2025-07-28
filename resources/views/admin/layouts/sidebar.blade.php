@@ -28,14 +28,15 @@
             Galeri
         </a>
 
-        <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-300 hover:bg-gray-800 rounded-lg transition duration-200">
-            <span class="material-symbols-outlined mr-3">settings</span>
-            Pengaturan
+        {{-- Link Laporan Aduan BARU --}}
+        <a href="{{ route('admin.aduan.index') }}"
+            class="flex items-center px-4 py-2.5 text-sm rounded-lg transition duration-200
+                  {{ request()->routeIs('admin.aduan.*') ? 'font-bold bg-yellow-400 text-gray-900' : 'font-medium text-gray-300 hover:bg-gray-800' }}">
+            <span class="material-symbols-outlined mr-3">report</span>
+            Laporan Aduan
         </a>
-    </nav>
-    {{-- (kode sidebar bagian atas) --}}
 
+    </nav>
     <div class="p-4 border-t border-gray-800">
         {{-- User Info & Logout --}}
         <div class="flex items-center">

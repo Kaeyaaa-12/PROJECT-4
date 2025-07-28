@@ -203,7 +203,8 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">SPKT</h3>
                         <p class="text-gray-500 mt-2">Laporan & Pengaduan Masyarakat</p>
-                        <a href="https://spkttulungagung.wixsite.com/home" target="_blank"
+                        {{-- BARIS INI DIGANTI --}}
+                        <a href="{{ route('layanan.spkt') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"

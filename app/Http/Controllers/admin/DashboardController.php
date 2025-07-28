@@ -3,35 +3,56 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Aduan;
 use App\Models\Berita;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        // Menghitung total berita
+        // Data Statistik Utama
         $totalBerita = Berita::count();
-
-        // Menghitung total gambar di galeri
         $totalGaleri = Gallery::count();
+        $totalPengunjung = 0; // Dummy data
 
-        // Mengambil 5 berita terbaru
-        $beritaTerbaru = Berita::latest('published_at')->take(5)->get();
+        // Data Aduan Terbaru untuk Tabel
+        $aduanTerbaru = Aduan::latest()->take(5)->get();
 
-        // Mengambil 6 gambar galeri terbaru
-        $galeriTerbaru = Gallery::latest()->take(6)->get();
+        // Data untuk Grafik Aduan Bulan Ini
+        $aduanBulanIni = Aduan::whereMonth('created_at', now()->month)
+            ->select('jenis_aduan', DB::raw('count(*) as total'))
+            ->groupBy('jenis_aduan')
+            ->pluck('total', 'jenis_aduan');
 
-        // Data dummy untuk total pengunjung, karena belum ada sistem tracking
-        $totalPengunjung = 0;
+        $totalAduanBulanIni = $aduanBulanIni->sum();
+        $chartBulanIniLabels = $aduanBulanIni->keys();
+        $chartBulanIniData = $aduanBulanIni->map(function ($total) use ($totalAduanBulanIni) {
+            return $totalAduanBulanIni > 0 ? round(($total / $totalAduanBulanIni) * 100, 2) : 0;
+        });
+
+        // Data untuk Grafik Aduan Keseluruhan
+        $aduanKeseluruhan = Aduan::select('jenis_aduan', DB::raw('count(*) as total'))
+            ->groupBy('jenis_aduan')
+            ->pluck('total', 'jenis_aduan');
+
+        $totalAduanKeseluruhan = $aduanKeseluruhan->sum();
+        $chartKeseluruhanLabels = $aduanKeseluruhan->keys();
+        $chartKeseluruhanData = $aduanKeseluruhan->map(function ($total) use ($totalAduanKeseluruhan) {
+            return $totalAduanKeseluruhan > 0 ? round(($total / $totalAduanKeseluruhan) * 100, 2) : 0;
+        });
 
         return view('admin.dashboard', compact(
             'totalBerita',
             'totalGaleri',
-            'beritaTerbaru',
-            'galeriTerbaru',
-            'totalPengunjung'
+            'totalPengunjung',
+            'aduanTerbaru',
+            'chartBulanIniLabels',
+            'chartBulanIniData',
+            'chartKeseluruhanLabels',
+            'chartKeseluruhanData'
         ));
     }
 }
