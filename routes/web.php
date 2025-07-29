@@ -8,10 +8,14 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\Admin\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\LayananController;
-use App\Http\Controllers\Admin\AduanController; // Tambahkan ini
+use App\Http\Controllers\Admin\AduanController;
+
+// --- CONTROLLER UNTUK AUTH ADMIN ---
+// Kita berikan alias agar tidak bentrok dengan controller auth bawaan
+use App\Http\Controllers\Admin\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\Auth\PasswordResetLinkController as AdminPasswordResetLinkController;
+use App\Http\Controllers\Admin\Auth\NewPasswordController as AdminNewPasswordController;
 
 // ... (route publik lainnya)
 Route::get('/', [HomeController::class, 'index'])->name('landing');
@@ -34,12 +38,20 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/skck', [LayananController::class, 'skck'])->name('skck');
 });
 
+
 // --- RUTE ADMIN ---
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-        Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+
+        // --- INI BAGIAN YANG DIPERBAIKI ---
+        // 1. Menggunakan Controller yang sudah di-alias
+        Route::post('/forgot-password', [AdminPasswordResetLinkController::class, 'store'])->name('password.email');
+
+        // 2. Menambahkan rute untuk menampilkan form reset dan menyimpan password baru
+        Route::get('reset-password/{token}', [AdminNewPasswordController::class, 'create'])->name('password.reset');
+        Route::post('reset-password', [AdminNewPasswordController::class, 'store'])->name('password.store');
     });
 
     Route::middleware('auth')->group(function () {
@@ -58,4 +70,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php'; // Baris ini bisa di-nonaktifkan jika tidak dipakai
