@@ -1,5 +1,5 @@
 <aside class="w-64 flex-shrink-0 bg-black text-white flex flex-col">
-    <div class="h-20 flex items-center justify-center bg-gray-900/50">
+    <div class="h-20 flex items-center justify-center bg-black">
         <span class="material-symbols-outlined text-yellow-400 text-3xl mr-2">security</span>
         <h1 class="text-xl font-bold tracking-wider">ADMIN</h1>
     </div>

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Polres Tulungagung</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- Link untuk ikon Material Symbols --}}
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
@@ -25,15 +28,13 @@
                     <div x-show="!showForgotPassword" x-transition>
                         <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6">ADMIN LOGIN</h2>
 
-                        {{-- Menampilkan pesan error validasi --}}
-                        @if ($errors->any())
+                        @if ($errors->any() && !$errors->has('email_forgot'))
                             <div class="mb-4 text-center bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg text-sm"
                                 role="alert">
                                 {{ $errors->first() }}
                             </div>
                         @endif
 
-                        {{-- Menampilkan pesan status sukses (misal: setelah reset password) --}}
                         @if (session('status'))
                             <div
                                 class="mb-4 font-medium text-sm text-green-400 bg-green-900/50 border border-green-700 text-center p-3 rounded-lg">
@@ -43,19 +44,27 @@
 
                         <form action="{{ route('admin.login') }}" method="POST" class="space-y-6">
                             @csrf
-                            {{-- INI BAGIAN YANG DIPERBAIKI: dari username menjadi email --}}
                             <div>
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Email</label>
                                 <input type="email" id="email" name="email" value="{{ old('email') }}" required
                                     class="w-full bg-gray-200 text-gray-900 border border-gray-500 rounded-lg p-2.5 focus:ring-yellow-500 focus:border-yellow-500 transition"
                                     placeholder="contoh@email.com">
                             </div>
-                            <div>
+                            <div x-data="{ showPassword: false }">
                                 <label for="password"
                                     class="block mb-2 text-sm font-medium text-gray-300">Password</label>
-                                <input type="password" id="password" name="password" required
-                                    class="w-full bg-gray-200 text-gray-900 border border-gray-500 rounded-lg p-2.5 focus:ring-yellow-500 focus:border-yellow-500 transition"
-                                    placeholder="••••••••">
+                                <div class="relative">
+                                    <input :type="showPassword ? 'text' : 'password'" id="password" name="password"
+                                        required
+                                        class="w-full bg-gray-200 text-gray-900 border border-gray-500 rounded-lg p-2.5 focus:ring-yellow-500 focus:border-yellow-500 transition"
+                                        placeholder="••••••••">
+                                    <button type="button" @click="showPassword = !showPassword"
+                                        class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-600">
+                                        <span x-show="!showPassword" class="material-symbols-outlined">visibility</span>
+                                        <span x-show="showPassword"
+                                            class="material-symbols-outlined">visibility_off</span>
+                                    </button>
+                                </div>
                             </div>
                             <div class="text-right -mt-2">
                                 <a href="#" @click.prevent="showForgotPassword = true"
@@ -81,8 +90,7 @@
                             </div>
                         @endif
 
-                        {{-- Menampilkan error validasi email lupa password --}}
-                        @error('email')
+                        @error('email_forgot')
                             <div class="mb-4 text-center bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg text-sm"
                                 role="alert">
                                 {{ $message }}
