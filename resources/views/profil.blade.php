@@ -191,7 +191,8 @@
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Bagian Operasional, membawahi antara lain
                             Satuan Lalu Lintas, Satuan Samapta Bhayangkara, Satuan Intelijen dan Keamanan, dan
                             lain-lain.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'bagops']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -204,7 +205,8 @@
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Bagian Sumber Daya Manusia, mengurusi
                             kepegawaian dan sumber daya manusia di lingkungan Polres.
                         </p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'bagsdm']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -216,7 +218,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">BAG REN</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Bagian Perencanaan, bertugas dalam perencanaan
                             program dan anggaran Polres.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'bagren']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -228,7 +231,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT INTELKAM</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Intelijen dan Keamanan, bertugas dalam
                             pengumpulan informasi dan intelijen.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'satintelkam']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -240,7 +244,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT RESKRIM</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Reserse Kriminal, bertugas dalam
                             penanganan tindak pidana umum.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'satreskrim']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -252,7 +257,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT NARKOBA</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Narkoba, bertugas dalam penanganan kasus
                             narkoba.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'satresnarkoba']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -264,7 +270,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT LANTAS</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Lalu Lintas, bertugas dalam pengaturan
                             lalu lintas dan penanganan kecelakaan lalu lintas.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'satlantas']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -276,7 +283,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT SAMAPTA</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Samapta Bhayangkara, bertugas dalam
                             pemeliharaan keamanan dan ketertiban masyarakat.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'satsamapta']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -288,7 +296,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT BINMAS</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Pembinaan Masyarakat, bertugas dalam
                             pembinaan masyarakat.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'satbinmas']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -300,7 +309,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SAT TAHTI</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Tahanan dan Barang Bukti, bertugas dalam
                             pengelolaan tahanan dan barang bukti.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sattahti']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -312,7 +322,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI WAS</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Pengawasan, bertugas dalam pengawasan
                             internal.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'siwas']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -324,7 +335,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI PROPAM</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Profesi dan Pengamanan, bertugas dalam
                             penegakan disiplin dan kode etik.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sipropam']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -336,7 +348,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI HUMAS</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Hubungan Masyarakat, bertugas dalam
                             hubungan masyarakat dan publikasi.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sihumas']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -347,7 +360,8 @@
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI KUM</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Hukum, bertugas dalam bidang hukum.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sikum']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -359,7 +373,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI TIK</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Teknologi Informasi dan Komunikasi,
                             bertugas dalam bidang teknologi informasi dan komunikasi.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sitik']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -371,7 +386,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SIUM</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Umum, bertugas dalam administrasi umum.
                         </p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sium']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -383,7 +399,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI KEU</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Keuangan, bertugas dalam pengelolaan
                             keuangan.</p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sikeu']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -395,7 +412,8 @@
                         <h3 class="text-lg font-bold text-gray-900 mb-2">SI DOKKES</h3>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Seksi Dokkes, bertugas dalam bidang kesehatan.
                         </p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'sidokkes']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                     <div class="bg-white rounded-lg shadow-lg p-6 text-center flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
@@ -408,7 +426,8 @@
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Sentra Pelayanan Kepolisian Terpadu, bertugas
                             dalam pelayanan kepolisian terpadu.
                         </p>
-                        <a href="#" class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
+                        <a href="{{ route('profil.satuan', ['page' => 'spkt']) }}"
+                            class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
                     </div>
 
                 </div>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\InovasiController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -16,7 +16,6 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController as AdminNewPasswordCon
 
 //RUTE PUBLIK
 Route::get('/', [HomeController::class, 'index'])->name('landing');
-Route::get('/profil-publik', fn() => view('profil'))->name('profil.publik');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
 //RUTE LAYANAN
@@ -32,6 +31,38 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/sp2hp', [LayananController::class, 'sp2hp'])->name('sp2hp');
     Route::get('/sim', [LayananController::class, 'sim'])->name('sim');
     Route::get('/skck', [LayananController::class, 'skck'])->name('skck');
+});
+
+//RUTE PROFIL
+Route::get('/profil-publik', [ProfilController::class, 'showPublicProfil'])->name('profil.publik');
+Route::prefix('profil')->name('profil.')->group(function () {
+    // Rute ini akan menangani /profil/bagops, /profil/bagsdm, dll.
+    Route::get('/{page}', [ProfilController::class, 'showSatuan'])->name('satuan');
+});
+
+//RUTE DETAIL SATUAN KERJA
+Route::prefix('profil')->name('profil.')->group(function () {
+    Route::get('/bagops', [ProfilController::class, 'bagops'])->name('bagops');
+    Route::get('/bagsdm', [ProfilController::class, 'bagsdm'])->name('bagsdm');
+    Route::get('/bagren', [ProfilController::class, 'bagren'])->name('bagren');
+    Route::get('/baglog', [ProfilController::class, 'baglog'])->name('baglog');
+    Route::get('/satintelkam', [ProfilController::class, 'satintelkam'])->name('satintelkam');
+    Route::get('/satreskrim', [ProfilController::class, 'satreskrim'])->name('satreskrim');
+    Route::get('/satresnarkoba', [ProfilController::class, 'satresnarkoba'])->name('satresnarkoba');
+    Route::get('/satsamapta', [ProfilController::class, 'satsamapta'])->name('satsamapta');
+    Route::get('/satlantas', [ProfilController::class, 'satlantas'])->name('satlantas');
+    Route::get('/satpamobvit', [ProfilController::class, 'satpamobvit'])->name('satpamobvit');
+    Route::get('/satpolairud', [ProfilController::class, 'satpolairud'])->name('satpolairud');
+    Route::get('/sattahti', [ProfilController::class, 'sattahti'])->name('sattahti');
+    Route::get('/siwas', [ProfilController::class, 'siwas'])->name('siwas');
+    Route::get('/sipropam', [ProfilController::class, 'sipropam'])->name('sipropam');
+    Route::get('/sihumas', [ProfilController::class, 'sihumas'])->name('sihumas');
+    Route::get('/sikum', [ProfilController::class, 'sikum'])->name('sikum');
+    Route::get('/sitik', [ProfilController::class, 'sitik'])->name('sitik');
+    Route::get('/sium', [ProfilController::class, 'sium'])->name('sium');
+    Route::get('/sikeu', [ProfilController::class, 'sikeu'])->name('sikeu');
+    Route::get('/sidokkes', [ProfilController::class, 'sidokkes'])->name('sidokkes');
+    Route::get('/spkt', [ProfilController::class, 'spkt'])->name('spkt');
 });
 
 Route::prefix('inovasi')->name('inovasi.')->group(function () {
