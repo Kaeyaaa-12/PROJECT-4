@@ -15,7 +15,6 @@
 
         /* Memberi ruang di body untuk fixed header yang lebih besar */
         body {
-            /* Perkiraan tinggi header baru: sekitar 148px */
             padding-top: 148px;
         }
     </style>
@@ -54,24 +53,32 @@
 
     <div>
         <main class="relative -mt-[148px]">
-            <div class="h-screen flex items-end justify-center hero-bg bg-cover bg-center">
+            <div class="relative h-screen hero-bg bg-cover bg-center overflow-hidden">
+                {{-- Overlay Gelap --}}
                 <div class="absolute inset-0 bg-black opacity-40"></div>
-                <div class="relative z-10 container mx-auto px-4 flex justify-between items-end w-full pb-10 md:pb-0">
-                    <div class="text-white w-full md:w-1/2 self-end mb-4 md:mb-20">
+
+                {{-- Kontainer untuk Teks di Kiri --}}
+                <div class="relative z-10 container mx-auto px-4 h-full flex items-center">
+                    <div class="text-white w-full md:w-1/2">
                         <h1 class="text-4xl lg:text-5xl font-bold">SELAMAT DATANG</h1>
                         <p class="mt-2 text-lg lg:text-xl">Website resmi dari Polres Tulungagung yang menyajikan
                             informasi secara lengkap dan ter-update.</p>
                     </div>
-                    <div class="w-full md:w-2/5 flex justify-center md:justify-end relative -mb-4">
-                        <div class="relative">
-                            <img src="{{ asset('assets/images/Kapolres.png') }}" alt="Foto Kapolres"
-                                class="h-auto w-full max-w-sm lg:max-w-md object-contain drop-shadow-lg">
-                            <div
-                                class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-yellow-500 text-black p-3 text-center">
-                                <p class="font-bold text-sm md:text-base">AKBP MUHAMMAD TAAT RESDIANTO, S.H., S.I.K.,
-                                    M.T.C.P.</p>
-                                <p class="text-xs md:text-sm">Kapolres Tulungagung</p>
-                            </div>
+                </div>
+
+                {{-- Kontainer untuk Gambar Kapolres --}}
+                <div class="absolute z-20 bottom-0 right-0 pointer-events-none">
+                    <div class="relative pointer-events-auto">
+                        {{-- =================== PERUBAHAN UKURAN GAMBAR =================== --}}
+                        <img src="{{ asset('assets/images/Kapolres.png') }}" alt="Foto Kapolres"
+                            class="object-contain drop-shadow-lg" style="height: 80vh; width: auto; max-height: 700px;">
+
+                        {{-- =================== PERUBAHAN POSISI TEXT BOX =================== --}}
+                        <div
+                            class="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-yellow-500 text-black p-3 text-center">
+                            <p class="font-bold text-sm md:text-base">AKBP MUHAMMAD TAAT RESDIANTO, S.H., S.I.K.,
+                                M.T.C.P.</p>
+                            <p class="text-xs md:text-sm">Kapolres Tulungagung</p>
                         </div>
                     </div>
                 </div>
@@ -172,7 +179,6 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">Layanan SKCK</h3>
                         <p class="text-gray-500 mt-2">Prosedur Pembuatan SKCK</p>
-                        {{-- Link diubah ke rute internal --}}
                         <a href="{{ route('layanan.skck') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
@@ -203,7 +209,6 @@
                         </div>
                         <h3 class="text-xl font-semibold mt-6 text-gray-700">SPKT</h3>
                         <p class="text-gray-500 mt-2">Laporan & Pengaduan Masyarakat</p>
-                        {{-- BARIS INI DIGANTI --}}
                         <a href="{{ route('layanan.spkt') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
@@ -222,8 +227,6 @@
                         <a href="{{ route('layanan.sidik_jari') }}"
                             class="text-yellow-500 hover:text-yellow-600 font-semibold mt-4 inline-block">Selengkapnya</a>
                     </div>
-
-                    {{-- [PENAMBAHAN] Baris Ketiga --}}
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
                         data-aos="fade-up" data-aos-delay="0">
                         <div class="w-24 h-24 bg-yellow-100 rounded-full mx-auto flex items-center justify-center">
@@ -297,10 +300,8 @@
                                     <a href="{{ $berita->link ?? '#' }}" target="_blank"
                                         class="flex items-center gap-4 group" data-aos="fade-up"
                                         data-aos-delay="{{ $loop->iteration * 100 }}">
-                                        {{-- --- AWAL PERUBAHAN UKURAN GAMBAR --- --}}
                                         <img src="{{ asset('storage/' . $berita->image) }}"
                                             alt="{{ $berita->title }}" class="w-40 h-28 object-cover rounded-lg">
-                                        {{-- --- AKHIR PERUBAHAN --- --}}
                                         <div>
                                             <span
                                                 class="text-xs text-gray-500">{{ $berita->published_at->format('d M Y') }}</span>
@@ -328,10 +329,8 @@
                                     <div class="absolute inset-0 bg-black/50"></div>
                                     <div
                                         class="absolute bottom-0 p-2 bg-gradient-to-t from-black to-transparent w-full">
-                                        {{-- --- AWAL PERUBAHAN UKURAN TEKS JUDUL --- --}}
                                         <h5 class="text-white text-xs font-bold leading-tight">{{ $berita->title }}
                                         </h5>
-                                        {{-- --- AKHIR PERUBAHAN --- --}}
                                     </div>
                                 </a>
                             @empty
