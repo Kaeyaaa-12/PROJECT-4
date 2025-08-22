@@ -10,20 +10,17 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\Admin\AduanController;
-
-// --- CONTROLLER UNTUK AUTH ADMIN ---
-// Kita berikan alias agar tidak bentrok dengan controller auth bawaan
 use App\Http\Controllers\Admin\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController as AdminPasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController as AdminNewPasswordController;
 
-// ... (route publik lainnya)
+//RUTE PUBLIK
 Route::get('/', [HomeController::class, 'index'])->name('landing');
 Route::get('/profil-publik', fn() => view('profil'))->name('profil.publik');
 Route::get('/inovasi', [InovasiController::class, 'index'])->name('inovasi.index');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
-// --- RUTE LAYANAN ---
+//RUTE LAYANAN
 Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/spkt', [LayananController::class, 'spkt'])->name('spkt');
     Route::post('/aduan', [LayananController::class, 'storeAduan'])->name('aduan.store');
@@ -38,18 +35,12 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/skck', [LayananController::class, 'skck'])->name('skck');
 });
 
-
-// --- RUTE ADMIN ---
+//RUTE ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-
-        // --- INI BAGIAN YANG DIPERBAIKI ---
-        // 1. Menggunakan Controller yang sudah di-alias
         Route::post('/forgot-password', [AdminPasswordResetLinkController::class, 'store'])->name('password.email');
-
-        // 2. Menambahkan rute untuk menampilkan form reset dan menyimpan password baru
         Route::get('reset-password/{token}', [AdminNewPasswordController::class, 'create'])->name('password.reset');
         Route::post('reset-password', [AdminNewPasswordController::class, 'store'])->name('password.store');
     });
@@ -57,17 +48,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/login/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-
-        // Resource routes
         Route::resource('beritas', BeritaController::class);
         Route::resource('galleries', GalleryController::class);
-
-        // Rute untuk Laporan Aduan
         Route::get('aduan', [AduanController::class, 'index'])->name('aduan.index');
         Route::get('aduan/{aduan}', [AduanController::class, 'show'])->name('aduan.show');
         Route::delete('aduan/{aduan}', [AduanController::class, 'destroy'])->name('aduan.destroy');
         Route::patch('aduan/{aduan}/status', [AduanController::class, 'updateStatus'])->name('aduan.updateStatus');
     });
 });
-
-// require __DIR__.'/auth.php'; // Baris ini bisa di-nonaktifkan jika tidak dipakai
