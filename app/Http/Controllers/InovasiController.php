@@ -46,5 +46,10 @@ class InovasiController extends Controller
     public function tar()
     {
         return view('inovasi.tar');
-    }   
+    }
+
+    public function mobilSenyum()
+    {
+        return view('inovasi.mobil_senyum');
+    }
 }

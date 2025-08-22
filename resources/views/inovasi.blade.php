@@ -193,6 +193,26 @@
                         <img src="{{ asset('assets/images/TAR.png') }}" alt="Aplikasi TAR" class="w-12/13 h-auto">
                     </div>
                 </div>
+
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 mt-20" data-aos="fade-right">
+                    <div class="w-full md:w-1/2">
+                        <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">07</div>
+                        <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">MOBIL SENYUM</h3>
+                        <p class="text-gray-600 leading-relaxed text-justify">
+                            Mobil Senyum adalah program Polres Tulungagung untuk berbagi kebahagiaan dengan memberikan
+                            makanan bergizi gratis kepada masyarakat Tulungagung, sebagai bentuk dukungan
+                            terhadap program nasional dan kegiatan kemasyarakatan yang sudah berjalan.
+                        </p>
+                        <a href="{{ route('inovasi.mobil_senyum') }}"
+                            class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
+                            LIHAT SELENGKAPNYA
+                        </a>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <img src="{{ asset('assets/images/mobilsenyum.png') }}" alt="Mobil Senyum"
+                            class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
             </div>
         </section>
 

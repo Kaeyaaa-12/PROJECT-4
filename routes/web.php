@@ -73,6 +73,7 @@ Route::prefix('inovasi')->name('inovasi.')->group(function () {
     Route::get('/astuti-mobile', [InovasiController::class, 'astutiMobile'])->name('astuti_mobile');
     Route::get('/tacs', [InovasiController::class, 'tacs'])->name('tacs');
     Route::get('/tar', [InovasiController::class, 'tar'])->name('tar');
+    Route::get('/mobil-senyum', [InovasiController::class, 'mobilSenyum'])->name('mobil_senyum');
 });
 
 //RUTE ADMIN
