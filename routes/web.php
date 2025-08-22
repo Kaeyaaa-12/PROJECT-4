@@ -17,7 +17,6 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController as AdminNewPasswordCon
 //RUTE PUBLIK
 Route::get('/', [HomeController::class, 'index'])->name('landing');
 Route::get('/profil-publik', fn() => view('profil'))->name('profil.publik');
-Route::get('/inovasi', [InovasiController::class, 'index'])->name('inovasi.index');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
 //RUTE LAYANAN
@@ -33,6 +32,16 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/sp2hp', [LayananController::class, 'sp2hp'])->name('sp2hp');
     Route::get('/sim', [LayananController::class, 'sim'])->name('sim');
     Route::get('/skck', [LayananController::class, 'skck'])->name('skck');
+});
+
+Route::prefix('inovasi')->name('inovasi.')->group(function () {
+    Route::get('/', [InovasiController::class, 'index'])->name('index');
+    Route::get('/pos-digital-astuti', [InovasiController::class, 'posDigitalAstuti'])->name('pos_digital_astuti');
+    Route::get('/sim-ceria', [InovasiController::class, 'simCeria'])->name('sim_ceria');
+    Route::get('/sim-astuti', [InovasiController::class, 'simAstuti'])->name('sim_astuti');
+    Route::get('/astuti-mobile', [InovasiController::class, 'astutiMobile'])->name('astuti_mobile');
+    Route::get('/tacs', [InovasiController::class, 'tacs'])->name('tacs');
+    Route::get('/tar', [InovasiController::class, 'tar'])->name('tar');
 });
 
 //RUTE ADMIN

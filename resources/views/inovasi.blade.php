@@ -85,7 +85,7 @@
                             juga fitur untuk Jadwal SIM Keliling di Wilayah Polres Tulungagung, Jawa Timur. Juga dengan
                             fitur utamanya yaitu pendaftaran SIM Secara Online lewat aplikasi Android.
                         </p>
-                        <a href="#"
+                        <a href="{{ route('inovasi.sim_ceria', ['slug' => 'sim_ceria']) }}"
                             class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
                             LIHAT SELENGKAPNYA
                         </a>
@@ -104,7 +104,7 @@
                             SIM Astuti adalah aplikasi game yang berisi simulasi ujian teori, juga ada fitur chat /
                             obrolan, juga ada fitur PvP Online (Player Versus Player)
                         </p>
-                        <a href="#"
+                        <a href="{{ route('inovasi.sim_astuti', ['slug' => 'sim_astuti']) }}"
                             class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
                             LIHAT SELENGKAPNYA
                         </a>
@@ -124,7 +124,7 @@
                             memungkinkan masyarakat untuk berkomunikasi langsung dengan petugas melalui layanan video
                             call 24 jam untuk mendapatkan berbagai informasi atau membuat laporan kepolisian.
                         </p>
-                        <a href="#"
+                        <a href="{{ route('inovasi.pos_digital_astuti', ['slug' => 'pos_digital_astuti']) }}"
                             class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
                             LIHAT SELENGKAPNYA
                         </a>
@@ -144,7 +144,7 @@
                             memudahkan masyarakat untuk mengurus perpanjangan SIM, SKCK, hingga layanan paspor dari
                             imigrasi di berbagai lokasi.
                         </p>
-                        <a href="#"
+                        <a href="{{ route('inovasi.astuti_mobile', ['slug' => 'astuti_mobile']) }}"
                             class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
                             LIHAT SELENGKAPNYA
                         </a>
@@ -164,7 +164,7 @@
                             menghubungkan rumah sakit, polisi, dan Jasa Raharja secara digital untuk mempercepat dan
                             menyederhanakan proses klaim asuransi bagi korban kecelakaan lalu lintas.
                         </p>
-                        <a href="#"
+                        <a href="{{ route('inovasi.tacs', ['slug' => 'tacs']) }}"
                             class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
                             LIHAT SELENGKAPNYA
                         </a>
@@ -184,7 +184,7 @@
                             riwayat pelanggaran lalu lintas seseorang, di mana data ini terintegrasi dan menjadi
                             pertimbangan utama saat proses pengurusan SIM maupun SKCK.
                         </p>
-                        <a href="#"
+                        <a href="{{ route('inovasi.tar', ['slug' => 'tar']) }}"
                             class="mt-8 inline-block bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg shadow-md hover:bg-yellow-500 transition-colors duration-300">
                             LIHAT SELENGKAPNYA
                         </a>
