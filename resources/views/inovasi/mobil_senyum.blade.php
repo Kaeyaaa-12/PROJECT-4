@@ -16,7 +16,6 @@
 </head>
 
 <body class="bg-gray-100 font-sans">
-    {{-- HEADER --}}
     <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center border-b border-gray-600 pb-4">
@@ -46,7 +45,6 @@
         </div>
     </header>
 
-    {{-- MAIN CONTENT --}}
     <main class="bg-white py-20">
         <div class="container mx-auto px-6">
             <a href="{{ route('inovasi.index') }}"
@@ -69,7 +67,6 @@
                     dalam memberikan makanan bergizi.
                 </p>
 
-                {{-- GAMBAR UTAMA INOVASI --}}
                 <div class="my-8 text-center">
                     <img src="{{ asset('assets/images/mobilsenyum.png') }}" alt="Mobil Senyum"
                         class="mx-auto rounded-lg shadow-lg max-w-full h-auto">
@@ -102,23 +99,19 @@
                     dan membangun kepercayaan.
                 </p>
 
-                {{-- GAMBAR TAMBAHAN --}}
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
-                    {{-- Foto 1 --}}
                     <div>
                         <img src="{{ asset('assets/images/mobilsenyum1.png') }}" alt="Kegiatan Mobil Senyum 1"
                             class="w-full h-48 object-cover rounded-lg shadow-md">
                         <p class="text-sm text-gray-500 mt-2 text-center">Interaksi hangat antara polisi dan anak-anak.
                         </p>
                     </div>
-                    {{-- Foto 2 --}}
                     <div>
                         <img src="{{ asset('assets/images/mobilsenyum2.png') }}" alt="Kegiatan Mobil Senyum 2"
                             class="w-full h-48 object-cover rounded-lg shadow-md">
                         <p class="text-sm text-gray-500 mt-2 text-center">Pembagian makanan bergizi kepada anak-anak.
                         </p>
                     </div>
-                    {{-- Foto 3 --}}
                     <div>
                         <img src="{{ asset('assets/images/mobilsenyum3.png') }}" alt="Kegiatan Mobil Senyum 3"
                             class="w-full h-48 object-cover rounded-lg shadow-md">
@@ -139,22 +132,21 @@
         </div>
     </main>
 
-    {{-- FOOTER --}}
-    <footer class="bg-black text-gray-300 pt-12 pb-8 mt-12">
+    <footer class="bg-black text-gray-300 pt-12 pb-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8" data-aos="fade-up">
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">POLRES TULUNGAGUNG</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">Website resmi Kepolisian Resor Tulungagung. Kami
-                        berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Website resmi Kepolisian Resor Tulungagung.
+                        Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat.</p>
                 </div>
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">TAUTAN CEPAT</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-yellow-400">Beranda</a></li>
-                        <li><a href="#layanan-umum" class="hover:text-yellow-400">Layanan</a></li>
-                        <li><a href="#berita" class="hover:text-yellow-400">Berita</a></li>
-                        <li><a href="#galeri" class="hover:text-yellow-400">Galeri</a></li>
+                        <li><a href="{{ url('/') }}" class="hover:text-yellow-400">Beranda</a></li>
+                        <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">Profil</a></li>
+                        <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">Inovasi</a></li>
+                        <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -164,24 +156,27 @@
                             <a href="https://www.google.com/maps/search/?api=1&query=Polres+Tulungagung" target="_blank"
                                 rel="noopener noreferrer" class="flex items-start group">
                                 <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-400 w-4 text-center"></i>
-                                <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">Jl. Ahmad Yani
-                                    Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur 66212</span>
+                                <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">Jl. Ahmad
+                                    Yani Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur
+                                    66212</span>
                             </a>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-yellow-400 w-4 text-center"></i>
-                            <span class="text-gray-400">(0355) 321110</span>
+                            <span class="text-gray-400">110</span>
                         </li>
                     </ul>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-yellow-400"><i
-                                class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
+                        <a href="https://www.facebook.com/humastulungagung?mibextid=LQQJ4d" aria-label="Facebook"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://x.com/Res1Tulungagung?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                            aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
                                 class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://www.instagram.com/polrestulungagung" aria-label="Instagram"
-                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400"><i
-                                class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
+                                class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com/@humaspolrestulungagung2604" aria-label="Youtube"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                 </div>
             </div>

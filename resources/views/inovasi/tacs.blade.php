@@ -63,7 +63,10 @@
 
             <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg text-gray-700">
                 <p class="mb-6 leading-relaxed">
-                    <strong>Polres Tulungagung</strong> meluncurkan aplikasi berbasis web bernama <strong>TACS (Traffic Accident Claim Sistem)</strong> sebagai inovasi untuk memudahkan korban kecelakaan lalu lintas (lakalantas) dalam mendapatkan pelayanan medis, kepastian hukum, dan penjaminan santunan Jasa Raharja.
+                    <strong>Polres Tulungagung</strong> meluncurkan aplikasi berbasis web bernama <strong>TACS (Traffic
+                        Accident Claim Sistem)</strong> sebagai inovasi untuk memudahkan korban kecelakaan lalu lintas
+                    (lakalantas) dalam mendapatkan pelayanan medis, kepastian hukum, dan penjaminan santunan Jasa
+                    Raharja.
                 </p>
 
                 {{-- GAMBAR INOVASI --}}
@@ -74,7 +77,10 @@
 
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Kolaborasi Lintas Instansi</h2>
                 <p class="mb-4">
-                    Aplikasi ini merupakan hasil kolaborasi antara Satlantas Polres Tulungagung, PT Jasa Raharja, serta dua rumah sakit di Tulungagung: <strong>RS Satiti Ngunut</strong> dan <strong>RS Putra Waspada</strong>. Kerja sama tersebut diresmikan melalui penandatanganan MoU pada <strong>8 Juli 2020</strong>.
+                    Aplikasi ini merupakan hasil kolaborasi antara Satlantas Polres Tulungagung, PT Jasa Raharja, serta
+                    dua rumah sakit di Tulungagung: <strong>RS Satiti Ngunut</strong> dan <strong>RS Putra
+                        Waspada</strong>. Kerja sama tersebut diresmikan melalui penandatanganan MoU pada <strong>8 Juli
+                        2020</strong>.
                 </p>
 
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Alur Integrasi Digital</h2>
@@ -88,63 +94,81 @@
 
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Manfaat dan Semangat ASTUTI</h2>
                 <p class="mb-4">
-                    Dengan sistem ini, proses klaim asuransi Jasa Raharja yang sebelumnya rumit kini menjadi <strong>lebih efisien dan transparan</strong>. TACS mempercepat layanan bagi korban kecelakaan tanpa harus repot bolak-balik ke kantor kepolisian atau instansi lain.
+                    Dengan sistem ini, proses klaim asuransi Jasa Raharja yang sebelumnya rumit kini menjadi
+                    <strong>lebih efisien dan transparan</strong>. TACS mempercepat layanan bagi korban kecelakaan tanpa
+                    harus repot bolak-balik ke kantor kepolisian atau instansi lain.
                 </p>
                 <p>
-                    TACS diwujudkan sebagai bagian dari semangat <strong>ASTUTI</strong> (Agungge Sikap Tulung-Tinulung), yakni upaya saling tolong-menolong dan memberikan pelayanan terbaik kepada masyarakat, khususnya korban kecelakaan lalu lintas melalui pemanfaatan teknologi dan integrasi layanan.
+                    TACS diwujudkan sebagai bagian dari semangat <strong>ASTUTI</strong> (Agungge Sikap
+                    Tulung-Tinulung), yakni upaya saling tolong-menolong dan memberikan pelayanan terbaik kepada
+                    masyarakat, khususnya korban kecelakaan lalu lintas melalui pemanfaatan teknologi dan integrasi
+                    layanan.
                 </p>
             </div>
         </div>
     </main>
 
     {{-- FOOTER --}}
-    <footer class="bg-black text-gray-300 pt-12 pb-8 mt-12">
+    <footer class="bg-black text-gray-300 pt-12 pb-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8" data-aos="fade-up">
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">POLRES TULUNGAGUNG</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">Website resmi Kepolisian Resor Tulungagung. Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Website resmi Kepolisian Resor Tulungagung.
+                        Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat.</p>
                 </div>
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">TAUTAN CEPAT</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-yellow-400">Beranda</a></li>
-                        <li><a href="#layanan-umum" class="hover:text-yellow-400">Layanan</a></li>
-                        <li><a href="#berita" class="hover:text-yellow-400">Berita</a></li>
-                        <li><a href="#galeri" class="hover:text-yellow-400">Galeri</a></li>
+                        <li><a href="{{ url('/') }}" class="hover:text-yellow-400">Beranda</a></li>
+                        <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">Profil</a></li>
+                        <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">Inovasi</a></li>
+                        <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">HUBUNGI KAMI</h4>
                     <ul class="space-y-3 text-sm">
                         <li>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Polres+Tulungagung" target="_blank" rel="noopener noreferrer" class="flex items-start group">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Polres+Tulungagung" target="_blank"
+                                rel="noopener noreferrer" class="flex items-start group">
                                 <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-400 w-4 text-center"></i>
-                                <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur 66212</span>
+                                <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">Jl. Ahmad
+                                    Yani Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur
+                                    66212</span>
                             </a>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-yellow-400 w-4 text-center"></i>
-                            <span class="text-gray-400">(0355) 321110</span>
+                            <span class="text-gray-400">110</span>
                         </li>
                     </ul>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-yellow-400"><i class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://www.instagram.com/polrestulungagung" aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://www.facebook.com/humastulungagung?mibextid=LQQJ4d" aria-label="Facebook"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://x.com/Res1Tulungagung?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                            aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
+                                class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
+                                class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com/@humaspolrestulungagung2604" aria-label="Youtube"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                 </div>
             </div>
             <div class="text-center text-sm text-gray-500">
-                &copy; 2025 Kepolisian Resor Tulungagung. Semua Hak Cipta Dilindungi.
+                © 2025 Kepolisian Resor Tulungagung. Semua Hak Cipta Dilindungi.
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({
+            duration: 800,
+            once: true
+        });
     </script>
 </body>
 

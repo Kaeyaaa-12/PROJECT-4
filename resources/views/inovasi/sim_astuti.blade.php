@@ -63,19 +63,24 @@
 
             <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg text-gray-700">
                 <p class="mb-6 leading-relaxed">
-                    <strong>SIM Astuti</strong> merupakan aplikasi game edukatif yang didesain untuk membantu masyarakat—khususnya calon pemohon Surat Izin Mengemudi (SIM)—dalam mempersiapkan diri menghadapi ujian teori SIM.
+                    <strong>SIM Astuti</strong> merupakan aplikasi game edukatif yang didesain untuk membantu
+                    masyarakat—khususnya calon pemohon Surat Izin Mengemudi (SIM)—dalam mempersiapkan diri menghadapi
+                    ujian teori SIM.
                 </p>
 
-                
+
                 <div class="my-8 text-center">
                     <img src="{{ asset('assets/images/SIMASTUTI.png') }}" alt="SIM Astuti"
                         class="mx-auto rounded-lg shadow-lg max-w-[300px] h-auto">
                 </div>
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Fitur Unggulan</h2>
                 <ul class="list-disc pl-5 space-y-2 mb-4">
-                    <li><strong>Simulasi Ujian Teori</strong>: Latihan soal-soal ujian teori SIM yang realistis dan interaktif.</li>
-                    <li><strong>Fitur Chat/Obrolan</strong>: Diskusi antar pengguna dan tanya jawab dengan admin atau narasumber.</li>
-                    <li><strong>PvP Online</strong>: Mode permainan duel antar pengguna untuk menjawab soal secara real-time.</li>
+                    <li><strong>Simulasi Ujian Teori</strong>: Latihan soal-soal ujian teori SIM yang realistis dan
+                        interaktif.</li>
+                    <li><strong>Fitur Chat/Obrolan</strong>: Diskusi antar pengguna dan tanya jawab dengan admin atau
+                        narasumber.</li>
+                    <li><strong>PvP Online</strong>: Mode permainan duel antar pengguna untuk menjawab soal secara
+                        real-time.</li>
                 </ul>
 
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Keunggulan Lain</h2>
@@ -85,60 +90,60 @@
                     <li>Sistem pencapaian (achievement) untuk meningkatkan semangat belajar.</li>
                 </ul>
                 <p>
-                    Dengan kehadiran SIM Astuti, Satlantas Polres Tulungagung berharap proses persiapan ujian teori SIM menjadi lebih efektif sekaligus menyenangkan, serta mempererat komunikasi di kalangan pengguna aplikasi.
+                    Dengan kehadiran SIM Astuti, Satlantas Polres Tulungagung berharap proses persiapan ujian teori SIM
+                    menjadi lebih efektif sekaligus menyenangkan, serta mempererat komunikasi di kalangan pengguna
+                    aplikasi.
                 </p>
             </div>
         </div>
     </main>
 
     {{-- FOOTER --}}
-    <footer class="relative z-20 bg-black text-gray-300 pt-12 pb-8">
+    <footer class="bg-black text-gray-300 pt-12 pb-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8" data-aos="fade-up">
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">POLRES TULUNGAGUNG</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        Website resmi Kepolisian Resor Tulungagung. Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat.
-                    </p>
+                    <p class="text-sm text-gray-400 leading-relaxed">Website resmi Kepolisian Resor Tulungagung.
+                        Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat.</p>
                 </div>
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">TAUTAN CEPAT</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="{{ url('/') }}" class="hover:text-yellow-400">Beranda</a></li>
-                        <li><a href="#layanan-umum" class="hover:text-yellow-400">Layanan</a></li>
-                        <li><a href="#berita" class="hover:text-yellow-400">Berita</a></li>
-                        <li><a href="#galeri" class="hover:text-yellow-400">Galeri</a></li>
+                        <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">Profil</a></li>
+                        <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">Inovasi</a></li>
+                        <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">HUBUNGI KAMI</h4>
                     <ul class="space-y-3 text-sm">
                         <li>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Polres+Tulungagung" target="_blank" rel="noopener noreferrer" class="flex items-start group">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Polres+Tulungagung" target="_blank"
+                                rel="noopener noreferrer" class="flex items-start group">
                                 <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-400 w-4 text-center"></i>
-                                <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">
-                                    Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur 66212
-                                </span>
+                                <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">Jl. Ahmad
+                                    Yani Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur
+                                    66212</span>
                             </a>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-yellow-400 w-4 text-center"></i>
-                            <span class="text-gray-400">(0355) 321110</span>
+                            <span class="text-gray-400">110</span>
                         </li>
                     </ul>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-yellow-400">
-                            <i class="fab fa-facebook-f fa-lg"></i>
-                        </a>
-                        <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400">
-                            <i class="fab fa-twitter fa-lg"></i>
-                        </a>
-                        <a href="https://www.instagram.com/polrestulungagung" aria-label="Instagram" class="text-gray-300 hover:text-yellow-400">
-                            <i class="fab fa-instagram fa-lg"></i>
-                        </a>
-                        <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400">
-                            <i class="fab fa-youtube fa-lg"></i>
-                        </a>
+                        <a href="https://www.facebook.com/humastulungagung?mibextid=LQQJ4d" aria-label="Facebook"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://x.com/Res1Tulungagung?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                            aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
+                                class="fab fa-twitter fa-lg"></i></a>
+                        <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
+                                class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com/@humaspolrestulungagung2604" aria-label="Youtube"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                 </div>
             </div>
@@ -150,7 +155,10 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({
+            duration: 800,
+            once: true
+        });
     </script>
 </body>
 

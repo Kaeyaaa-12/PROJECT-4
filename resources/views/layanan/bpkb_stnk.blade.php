@@ -106,10 +106,10 @@
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">TAUTAN CEPAT</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-yellow-400">Beranda</a></li>
-                        <li><a href="#layanan-umum" class="hover:text-yellow-400">Layanan</a></li>
-                        <li><a href="#berita" class="hover:text-yellow-400">Berita</a></li>
-                        <li><a href="#galeri" class="hover:text-yellow-400">Galeri</a></li>
+                        <li><a href="{{ url('/') }}" class="hover:text-yellow-400">Beranda</a></li>
+                        <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">Profil</a></li>
+                        <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">Inovasi</a></li>
+                        <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -126,24 +126,25 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-yellow-400 w-4 text-center"></i>
-                            <span class="text-gray-400">(0355) 321110</span>
+                            <span class="text-gray-400">110</span>
                         </li>
                     </ul>
                     <div class="flex space-x-4 mt-6">
-                        <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-yellow-400"><i
-                                class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
+                        <a href="https://www.facebook.com/humastulungagung?mibextid=LQQJ4d" aria-label="Facebook"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://x.com/Res1Tulungagung?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                            aria-label="Twitter" class="text-gray-300 hover:text-yellow-400"><i
                                 class="fab fa-twitter fa-lg"></i></a>
                         <a href="https://www.instagram.com/polrestulungagung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                             aria-label="Instagram" class="text-gray-300 hover:text-yellow-400"><i
                                 class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" aria-label="Youtube" class="text-gray-300 hover:text-yellow-400"><i
-                                class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://www.youtube.com/@humaspolrestulungagung2604" aria-label="Youtube"
+                            class="text-gray-300 hover:text-yellow-400"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                 </div>
             </div>
             <div class="text-center text-sm text-gray-500">
-                &copy; 2025 Kepolisian Resor Tulungagung. Semua Hak Cipta Dilindungi.
+                © 2025 Kepolisian Resor Tulungagung. Semua Hak Cipta Dilindungi.
             </div>
         </div>
     </footer>
