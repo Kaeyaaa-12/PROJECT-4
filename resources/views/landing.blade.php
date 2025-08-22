@@ -297,8 +297,10 @@
                                     <a href="{{ $berita->link ?? '#' }}" target="_blank"
                                         class="flex items-center gap-4 group" data-aos="fade-up"
                                         data-aos-delay="{{ $loop->iteration * 100 }}">
+                                        {{-- --- AWAL PERUBAHAN UKURAN GAMBAR --- --}}
                                         <img src="{{ asset('storage/' . $berita->image) }}"
-                                            alt="{{ $berita->title }}" class="w-36 h-24 object-cover rounded-lg">
+                                            alt="{{ $berita->title }}" class="w-40 h-28 object-cover rounded-lg">
+                                        {{-- --- AKHIR PERUBAHAN --- --}}
                                         <div>
                                             <span
                                                 class="text-xs text-gray-500">{{ $berita->published_at->format('d M Y') }}</span>
@@ -315,7 +317,6 @@
                         </div>
                     </div>
                     <div data-aos="fade-left">
-                        {{-- Blok sponsor sudah dihapus dan grid di bawah ini akan otomatis menampilkan 6 berita --}}
                         <div class="grid grid-cols-2 gap-4">
                             @forelse($beritaKecil as $berita)
                                 <a href="{{ $berita->link ?? '#' }}" target="_blank"
@@ -327,13 +328,14 @@
                                     <div class="absolute inset-0 bg-black/50"></div>
                                     <div
                                         class="absolute bottom-0 p-2 bg-gradient-to-t from-black to-transparent w-full">
-                                        <h5 class="text-white text-sm font-bold leading-tight">{{ $berita->title }}
+                                        {{-- --- AWAL PERUBAHAN UKURAN TEKS JUDUL --- --}}
+                                        <h5 class="text-white text-xs font-bold leading-tight">{{ $berita->title }}
                                         </h5>
+                                        {{-- --- AKHIR PERUBAHAN --- --}}
                                     </div>
                                 </a>
                             @empty
-                                @for ($i = 0; $i < 6; $i++)
-                                    {{-- Menampilkan 6 placeholder jika kosong --}}
+                                @for ($i = 0; $i < 4; $i++)
                                     <div class="relative rounded-lg overflow-hidden h-40 bg-gray-300"
                                         data-aos="fade-up" data-aos-delay="{{ ($i + 1) * 100 }}"></div>
                                 @endfor

@@ -163,7 +163,7 @@
                 <div class="w-20 h-1 bg-yellow-400 mt-2 mb-4 mx-auto"></div>
 
                 <div class="mt-8">
-                    <img src="{{ asset('assets/images/struktur_organisasi.png') }}"
+                    <img src="{{ asset('assets/images/strukturorganisasi.png') }}"
                         alt="Struktur Organisasi Polres Tulungagung"
                         class="rounded-lg shadow-xl w-full max-w-6xl mx-auto">
                 </div>
