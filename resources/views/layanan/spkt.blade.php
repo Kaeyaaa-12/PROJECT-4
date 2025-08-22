@@ -212,6 +212,14 @@
                         </div>
                     </form>
                 </div>
+
+                {{-- PENAMBAHAN BAGIAN CALL CENTER --}}
+                <div class="mt-12 text-center bg-red-50 border-t-4 border-red-500 p-6 rounded-lg">
+                    <p class="font-bold text-red-800">UNTUK KEADAAN DARURAT, SEGERA HUBUNGI:</p>
+                    <p class="text-4xl font-bold text-red-700 mt-2">CALL CENTER POLRI 110</p>
+                    <p class="text-red-700 mt-1">Layanan 24 Jam Bebas Pulsa</p>
+                </div>
+
             </div>
         </div>
     </main>

@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class LayananController extends Controller
 {
-    // ... (method-method lain yang sudah ada)
-
     /**
      * Menampilkan halaman layanan SPKT.
      */
@@ -22,6 +20,11 @@ class LayananController extends Controller
      */
     public function storeAduan(Request $request)
     {
+        // PENAMBAHAN: Cek jumlah aduan yang ada
+        if (Aduan::count() >= 100) {
+            return back()->with('error', 'Mohon maaf, kuota pengaduan online saat ini sudah penuh. Silakan coba lagi nanti.');
+        }
+
         $request->validate([
             'nama' => 'required|string|max:255',
             'jenis_aduan' => 'required|string|max:255',
