@@ -90,17 +90,29 @@
 
     <div>
         <main class="relative -mt-[116px] md:-mt-[116px]">
-            <div class="relative h-screen hero-bg bg-cover bg-center">
+            <div class="relative min-h-screen md:h-screen hero-bg bg-cover bg-center">
                 <div class="absolute inset-0 bg-black opacity-40"></div>
-                <div class="relative z-10 container mx-auto px-4 h-full flex items-center">
-                    <div class="text-white w-full md:w-1/2 text-center md:text-left">
+                <div class="relative z-10 container mx-auto px-4 h-full md:flex md:items-center">
+                    <div class="w-full md:w-1/2 text-white text-center md:text-left pt-32 md:pt-0">
                         <h1 class="text-4xl lg:text-5xl font-bold">SELAMAT DATANG</h1>
                         <p class="mt-2 text-lg lg:text-xl">Website resmi dari Polres Tulungagung yang menyajikan
                             informasi secara lengkap dan ter-update.</p>
+                        <div class="md:hidden mt-12 flex justify-center pb-12">
+                            <div class="relative pointer-events-auto">
+                                <img src="{{ asset('assets/images/Kapolres.png') }}" alt="Foto Kapolres"
+                                    class="object-contain drop-shadow-lg h-[55vh]" style="max-height: 500px;">
+                                <div
+                                    class="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-yellow-500 text-black p-3 text-center">
+                                    <p class="font-bold text-sm">AKBP MUHAMMAD TAAT RESDIANTO, S.H., S.I.K., M.T.C.P.
+                                    </p>
+                                    <p class="text-xs">Kapolres Tulungagung</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div
-                    class="absolute z-20 bottom-0 inset-x-0 md:inset-x-auto md:right-0 pointer-events-none flex justify-center md:block">
+                    class="hidden md:flex absolute z-20 bottom-0 inset-x-0 md:inset-x-auto md:right-0 pointer-events-none justify-center md:block">
                     <div class="relative pointer-events-auto">
                         <img src="{{ asset('assets/images/Kapolres.png') }}" alt="Foto Kapolres"
                             class="object-contain drop-shadow-lg h-[55vh] md:h-[80vh]" style="max-height: 700px;">
@@ -133,7 +145,6 @@
                     <div class="w-24 h-1 bg-yellow-400 mx-auto mt-2"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {{-- Baris Pertama --}}
                     <div class="bg-gray-50 p-8 rounded-lg text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
                         data-aos="fade-up" data-aos-delay="0">
                         <div class="w-24 h-24 bg-yellow-100 rounded-full mx-auto flex items-center justify-center">
@@ -460,14 +471,11 @@
             </div>
         </footer>
     </div>
-
-    {{-- Menambahkan AOS JS --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi AOS
         AOS.init({
-            duration: 800, // durasi animasi dalam ms
-            once: false, // apakah animasi hanya terjadi sekali
+            duration: 800,
+            once: false,
         });
     </script>
 </body>
