@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="text-center mb-8 -mt-4">
-        <img src="{{ asset('assets/images/Logo/SATRESNARKOBA.png') }}" alt="Logo Satresnarkoba"
+        <img src="{{ asset('assets/images/Logo/SATNARKOBA.png') }}" alt="Logo Satresnarkoba"
             class="h-56 mx-auto object-contain">
     </div>
     <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-yellow-400 pb-2 mb-4">Definisi</h2>

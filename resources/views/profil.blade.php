@@ -253,8 +253,9 @@
                             <img src="{{ asset('assets/images/Logo/SATNARKOBA.png') }}" alt="Logo Satnarkoba"
                                 class="h-41 w-41 object-contain">
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">SAT NARKOBA</h3>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Narkoba, bertugas dalam penanganan kasus
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">SAT RESNARKOBA</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">Satuan Reserse Narkoba, bertugas dalam
+                            penanganan kasus
                             narkoba.</p>
                         <a href="{{ route('profil.satuan', ['page' => 'satresnarkoba']) }}"
                             class="font-semibold text-yellow-500 hover:text-yellow-600">Selengkapnya</a>
