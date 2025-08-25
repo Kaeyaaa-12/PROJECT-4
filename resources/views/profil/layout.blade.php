@@ -7,17 +7,18 @@
     <title>@yield('title') - Polres Tulungagung</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
-            padding-top: 80px;
+            padding-top: 50px;
         }
     </style>
 </head>
 
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
-    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
-        <div class="container mx-auto px-4 py-2">
-            <div class="flex justify-between items-center border-b border-gray-600 pb-2">
+    <header x-data="{ open: false }" class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2 border-b border-gray-600">
                 <div class="flex items-center space-x-4">
                     <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
                     <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-12">
@@ -30,8 +31,22 @@
                     <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
                     <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
                 </div>
+                {{-- Tombol Hamburger untuk Mobile --}}
+                <div class="md:hidden">
+                    <button @click="open = !open" class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <nav class="flex justify-center items-center pt-3">
+            {{-- Navigasi Desktop --}}
+            <nav class="hidden md:flex justify-center items-center pt-3 pb-2">
                 <ul class="flex space-x-6 text-sm font-semibold">
                     <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
                     <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
@@ -41,6 +56,17 @@
                     <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                 </ul>
             </nav>
+        </div>
+        {{-- Navigasi Mobile (Dropdown) --}}
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-black" x-transition>
+            <ul class="flex flex-col items-center py-4 space-y-4 text-sm font-semibold">
+                <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+                <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+            </ul>
         </div>
     </header>
 
@@ -89,8 +115,8 @@
                     <h4 class="text-white text-md font-bold mb-3">HUBUNGI KAMI</h4>
                     <ul class="space-y-2 text-xs">
                         <li>
-                            <a href="https://maps.google.com/?q=Jalan+Ahmad+Yani+Timur+No.9,+Bago,+Kec.+Tulungagung,+Kabupaten+Tulungagung,+Jawa+Timur+66212"
-                                target="_blank" rel="noopener noreferrer" class="flex items-start group">
+                            <a href="https://maps.app.goo.gl/d1yF67j7V8s5J2Uf8" target="_blank"
+                                rel="noopener noreferrer" class="flex items-start group">
                                 <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-400 w-3 text-center"></i>
                                 <span class="text-gray-400 group-hover:text-yellow-400 transition-colors">Jl. Ahmad
                                     Yani Timur No.9, Bago, Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur
