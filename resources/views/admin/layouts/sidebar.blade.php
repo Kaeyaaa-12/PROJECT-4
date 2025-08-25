@@ -1,4 +1,8 @@
-<aside class="w-64 flex-shrink-0 bg-black text-white flex flex-col">
+{{-- Sidebar --}}
+<aside :class="{ 'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen }"
+    class="w-64 flex-shrink-0 bg-black text-white flex flex-col fixed inset-y-0 left-0 z-30
+           transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0">
+
     {{-- Bagian Header Sidebar dengan Logo --}}
     <div class="h-auto flex flex-col items-center justify-center bg-black py-4 px-2 border-b border-gray-700">
         <div class="flex items-center justify-center space-x-3 mb-3">
@@ -65,3 +69,10 @@
         </div>
     </div>
 </aside>
+
+{{-- Overlay untuk Mobile --}}
+<div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+    x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300"
+    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" style="display: none;">
+</div>

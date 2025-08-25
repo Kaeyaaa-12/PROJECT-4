@@ -9,6 +9,7 @@
     {{-- Link untuk ikon Material Symbols --}}
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -17,12 +18,20 @@
 </head>
 
 <body class="bg-gray-800 text-gray-200 font-sans">
-    <div class="flex min-h-screen">
+    <div x-data="{ sidebarOpen: false }" class="flex min-h-screen">
         {{-- Memanggil Sidebar --}}
         @include('admin.layouts.sidebar')
 
         {{-- Konten Utama --}}
         <div class="flex-1 flex flex-col">
+            {{-- Tombol Toggle Sidebar untuk Mobile --}}
+            <header class="lg:hidden bg-black p-4 flex justify-between items-center">
+                <button @click="sidebarOpen = !sidebarOpen" class="text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h1 class="text-xl font-bold tracking-wider text-yellow-400">ADMIN PANEL</h1>
+            </header>
+
             <main class="flex-1 p-6 lg:p-8">
                 @yield('content')
             </main>
