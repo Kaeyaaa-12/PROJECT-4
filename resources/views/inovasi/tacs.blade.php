@@ -8,32 +8,49 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             padding-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 20px;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
-    {{-- HEADER --}}
-    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
-        <div class="container mx-auto px-4 py-2">
-            <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-12">
-                    <div>
+    <header x-data="{ open: false }" class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                <div class="flex items-center space-x-4 min-w-0">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12 flex-shrink-0">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim"
+                        class="h-12 flex-shrink-0">
+                    <div class="hidden sm:block">
                         <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
                     </div>
                 </div>
-                <div class="text-right text-xs hidden md:block">
+                <div class="text-right text-xs hidden md:block flex-shrink-0 ml-4">
                     <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
                     <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
                 </div>
+                <div class="md:hidden flex-shrink-0 ml-4">
+                    <button @click="open = !open" class="text-white focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <nav class="flex justify-center items-center pt-3">
+            <nav class="hidden md:flex justify-center items-center pt-3 pb-2">
                 <ul class="flex space-x-6 text-sm font-semibold">
                     <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
                     <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
@@ -43,6 +60,16 @@
                     <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                 </ul>
             </nav>
+        </div>
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-black border-t border-gray-700" x-transition>
+            <ul class="flex flex-col items-center py-4 space-y-4 text-sm font-semibold">
+                <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+                <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+            </ul>
         </div>
     </header>
 
@@ -57,58 +84,50 @@
 
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-gray-800 uppercase">TACS</h1>
-                <p class="text-gray-500 mt-2">Traffic Accident Claim System</p>
+                <p class="text-gray-500 mt-2">Tulungagung Attention Command System</p>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
             </div>
 
             <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg text-gray-700">
                 <p class="mb-6 leading-relaxed">
-                    <strong>Polres Tulungagung</strong> meluncurkan aplikasi berbasis web bernama <strong>TACS (Traffic
-                        Accident Claim Sistem)</strong> sebagai inovasi untuk memudahkan korban kecelakaan lalu lintas
-                    (lakalantas) dalam mendapatkan pelayanan medis, kepastian hukum, dan penjaminan santunan Jasa
-                    Raharja.
+                    <strong>TACS (Tulungagung Attention Command System)</strong> adalah sistem komando terpusat yang
+                    memanfaatkan teknologi informasi untuk memantau dan merespons situasi kamtibmas di seluruh wilayah
+                    Tulungagung secara real-time.
                 </p>
 
                 {{-- GAMBAR INOVASI --}}
                 <div class="my-8 text-center">
-                    <img src="{{ asset('assets/images/TACS.png') }}" alt="TACS Polres Tulungagung"
+                    <img src="{{ asset('assets/images/TACS.png') }}" alt="TACS"
                         class="mx-auto rounded-lg shadow-lg max-w-full h-auto">
                 </div>
 
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Kolaborasi Lintas Instansi</h2>
-                <p class="mb-4">
-                    Aplikasi ini merupakan hasil kolaborasi antara Satlantas Polres Tulungagung, PT Jasa Raharja, serta
-                    dua rumah sakit di Tulungagung: <strong>RS Satiti Ngunut</strong> dan <strong>RS Putra
-                        Waspada</strong>. Kerja sama tersebut diresmikan melalui penandatanganan MoU pada <strong>8 Juli
-                        2020</strong>.
-                </p>
-
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Alur Integrasi Digital</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Komponen Sistem</h2>
                 <ul class="list-disc pl-5 space-y-2 mb-6">
-                    <li>Korban lakalantas dibawa ke rumah sakit.</li>
-                    <li>Rumah sakit menginput data korban ke aplikasi TACS.</li>
-                    <li>Laporan otomatis terhubung ke unit Laka Satlantas dan Jasa Raharja.</li>
-                    <li>Verifikasi dan approval klaim dilakukan secara digital.</li>
-                    <li>Hasil disampaikan langsung ke rumah sakit untuk ditindaklanjuti.</li>
+                    <li><strong>CCTV Monitoring:</strong> Ratusan CCTV terpasang di titik-titik strategis untuk
+                        memantau arus lalu lintas dan potensi gangguan keamanan.</li>
+                    <li><strong>Panic Button:</strong> Terintegrasi dengan aplikasi yang memungkinkan masyarakat
+                        mengirim sinyal darurat langsung ke command center.</li>
+                    <li><strong>Real-time Data:</strong> Menampilkan data lalu lintas, laporan kejadian, dan posisi
+                        petugas di lapangan.</li>
                 </ul>
 
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Manfaat dan Semangat ASTUTI</h2>
-                <p class="mb-4">
-                    Dengan sistem ini, proses klaim asuransi Jasa Raharja yang sebelumnya rumit kini menjadi
-                    <strong>lebih efisien dan transparan</strong>. TACS mempercepat layanan bagi korban kecelakaan tanpa
-                    harus repot bolak-balik ke kantor kepolisian atau instansi lain.
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Mekanisme Kerja</h2>
+                <p class="mb-6">
+                    Semua informasi dari berbagai sumber diterima dan dianalisis di command center. Petugas kemudian
+                    dapat dengan cepat mengirimkan unit patroli terdekat ke lokasi kejadian, mempersingkat waktu
+                    respons.
                 </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Keunggulan TACS</h2>
                 <p>
-                    TACS diwujudkan sebagai bagian dari semangat <strong>ASTUTI</strong> (Agungge Sikap
-                    Tulung-Tinulung), yakni upaya saling tolong-menolong dan memberikan pelayanan terbaik kepada
-                    masyarakat, khususnya korban kecelakaan lalu lintas melalui pemanfaatan teknologi dan integrasi
-                    layanan.
+                    <strong>TACS</strong> meningkatkan efektivitas patroli, mempercepat penanganan tindak kriminal, dan
+                    memberikan rasa aman yang lebih besar kepada masyarakat. Sistem ini adalah wujud nyata dari Polisi
+                    4.0 yang prediktif, responsif, dan transparan.
                 </p>
             </div>
         </div>
     </main>
 
-    {{-- FOOTER --}}
     <footer class="bg-black text-gray-300 pt-10 pb-6">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-6 mb-6" data-aos="fade-up">

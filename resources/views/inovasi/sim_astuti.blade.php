@@ -4,36 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM Astuti Satlantas - Polres Tulungagung</title>
+    <title>Inovasi SIM Astuti - Polres Tulungagung</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             padding-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 20px;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
-    {{-- HEADER --}}
-    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
-        <div class="container mx-auto px-4 py-2">
-            <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-12">
-                    <div>
+    <header x-data="{ open: false }" class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                <div class="flex items-center space-x-4 min-w-0">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12 flex-shrink-0">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim"
+                        class="h-12 flex-shrink-0">
+                    <div class="hidden sm:block">
                         <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
                     </div>
                 </div>
-                <div class="text-right text-xs hidden md:block">
+                <div class="text-right text-xs hidden md:block flex-shrink-0 ml-4">
                     <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
                     <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
                 </div>
+                <div class="md:hidden flex-shrink-0 ml-4">
+                    <button @click="open = !open" class="text-white focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <nav class="flex justify-center items-center pt-3">
+            <nav class="hidden md:flex justify-center items-center pt-3 pb-2">
                 <ul class="flex space-x-6 text-sm font-semibold">
                     <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
                     <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
@@ -43,6 +60,16 @@
                     <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                 </ul>
             </nav>
+        </div>
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-black border-t border-gray-700" x-transition>
+            <ul class="flex flex-col items-center py-4 space-y-4 text-sm font-semibold">
+                <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+                <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+            </ul>
         </div>
     </header>
 
@@ -56,49 +83,48 @@
             </a>
 
             <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gray-800 uppercase">SIM Astuti Satlantas Tulungagung</h1>
-                <p class="text-gray-500 mt-2">Aplikasi Edukasi dan Interaksi Modern</p>
+                <h1 class="text-4xl font-bold text-gray-800 uppercase">SIM Astuti</h1>
+                <p class="text-gray-500 mt-2">Agunge Sikap Tulung Tinulung</p>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
             </div>
 
             <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg text-gray-700">
                 <p class="mb-6 leading-relaxed">
-                    <strong>SIM Astuti</strong> merupakan aplikasi game edukatif yang didesain untuk membantu
-                    masyarakat—khususnya calon pemohon Surat Izin Mengemudi (SIM)—dalam mempersiapkan diri menghadapi
-                    ujian teori SIM.
+                    <strong>SIM Astuti</strong> merupakan layanan inovatif dari Polres Tulungagung yang menyediakan
+                    program bimbingan belajar gratis bagi pemohon SIM yang gagal dalam ujian. Tujuannya adalah untuk
+                    membantu masyarakat agar lebih siap dan memahami materi ujian.
                 </p>
 
-
+                {{-- GAMBAR INOVASI --}}
                 <div class="my-8 text-center">
                     <img src="{{ asset('assets/images/SIMASTUTI.png') }}" alt="SIM Astuti"
-                        class="mx-auto rounded-lg shadow-lg max-w-[300px] h-auto">
+                        class="mx-auto rounded-lg shadow-lg max-w-full h-auto">
                 </div>
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Fitur Unggulan</h2>
-                <ul class="list-disc pl-5 space-y-2 mb-4">
-                    <li><strong>Simulasi Ujian Teori</strong>: Latihan soal-soal ujian teori SIM yang realistis dan
-                        interaktif.</li>
-                    <li><strong>Fitur Chat/Obrolan</strong>: Diskusi antar pengguna dan tanya jawab dengan admin atau
-                        narasumber.</li>
-                    <li><strong>PvP Online</strong>: Mode permainan duel antar pengguna untuk menjawab soal secara
-                        real-time.</li>
+
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Materi Bimbingan</h2>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>Ujian Teori:</strong> Bimbingan mencakup pemahaman mendalam tentang rambu lalu lintas
+                        dan peraturan berkendara.</li>
+                    <li><strong>Ujian Praktik:</strong> Latihan praktik langsung di lapangan uji SIM Satpas Polres
+                        Tulungagung.</li>
                 </ul>
 
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Keunggulan Lain</h2>
-                <ul class="list-disc pl-5 space-y-2 mb-6">
-                    <li>Antarmuka ramah pengguna dan menarik.</li>
-                    <li>Update rutin soal-soal terbaru.</li>
-                    <li>Sistem pencapaian (achievement) untuk meningkatkan semangat belajar.</li>
-                </ul>
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Jadwal Pelaksanaan</h2>
+                <p class="mb-6">
+                    Bimbingan belajar diadakan setiap hari Sabtu, memberikan kesempatan bagi masyarakat untuk berlatih
+                    tanpa mengganggu hari kerja.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Manfaat Program</h2>
                 <p>
-                    Dengan kehadiran SIM Astuti, Satlantas Polres Tulungagung berharap proses persiapan ujian teori SIM
-                    menjadi lebih efektif sekaligus menyenangkan, serta mempererat komunikasi di kalangan pengguna
-                    aplikasi.
+                    Dengan adanya <strong>SIM Astuti</strong>, diharapkan tingkat kelulusan ujian SIM meningkat dan
+                    masyarakat menjadi lebih tertib dalam berlalu lintas. Program ini juga menunjukkan komitmen Polres
+                    Tulungagung dalam memberikan pelayanan prima.
                 </p>
             </div>
         </div>
     </main>
 
-    {{-- FOOTER --}}
     <footer class="bg-black text-gray-300 pt-10 pb-6">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-6 mb-6" data-aos="fade-up">

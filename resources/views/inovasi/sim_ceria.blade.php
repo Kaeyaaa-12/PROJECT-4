@@ -4,36 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIM Ceria Satlantas - Polres Tulungagung</title>
+    <title>Inovasi SIM Ceria - Polres Tulungagung</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             padding-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 20px;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
-    {{-- HEADER --}}
-    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
-        <div class="container mx-auto px-4 py-2">
-            <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-12">
-                    <div>
+    <header x-data="{ open: false }" class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                <div class="flex items-center space-x-4 min-w-0">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12 flex-shrink-0">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim"
+                        class="h-12 flex-shrink-0">
+                    <div class="hidden sm:block">
                         <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
                     </div>
                 </div>
-                <div class="text-right text-xs hidden md:block">
+                <div class="text-right text-xs hidden md:block flex-shrink-0 ml-4">
                     <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
                     <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
                 </div>
+                <div class="md:hidden flex-shrink-0 ml-4">
+                    <button @click="open = !open" class="text-white focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <nav class="flex justify-center items-center pt-3">
+            <nav class="hidden md:flex justify-center items-center pt-3 pb-2">
                 <ul class="flex space-x-6 text-sm font-semibold">
                     <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
                     <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
@@ -43,6 +60,16 @@
                     <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                 </ul>
             </nav>
+        </div>
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-black border-t border-gray-700" x-transition>
+            <ul class="flex flex-col items-center py-4 space-y-4 text-sm font-semibold">
+                <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+                <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+            </ul>
         </div>
     </header>
 
@@ -56,56 +83,50 @@
             </a>
 
             <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gray-800 uppercase">SIM Ceria Satlantas Tulungagung</h1>
-                <p class="text-gray-500 mt-2">Inovasi Layanan Informasi SIM</p>
+                <h1 class="text-4xl font-bold text-gray-800 uppercase">Aplikasi SIM Ceria</h1>
+                <p class="text-gray-500 mt-2">Cepat, Efektif, Responsif, Inovatif, Adaptif</p>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
             </div>
 
             <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg text-gray-700">
                 <p class="mb-6 leading-relaxed">
-                    <strong>SIM Ceria Satlantas Tulungagung</strong> adalah sebuah aplikasi inovatif dari Satuan Lalu
-                    Lintas Polres Tulungagung yang dirancang khusus untuk memberikan kemudahan, kenyamanan, dan
-                    kecepatan layanan informasi seputar Surat Izin Mengemudi (SIM) bagi masyarakat.
+                    <strong>SIM Ceria</strong> adalah sebuah inovasi dari Satlantas Polres Tulungagung yang bertujuan
+                    untuk memberikan kemudahan kepada masyarakat dalam proses pengurusan SIM. Aplikasi ini dirancang
+                    untuk pendaftaran dan ujian teori SIM secara online.
                 </p>
 
                 {{-- GAMBAR INOVASI --}}
                 <div class="my-8 text-center">
-                    <img src="{{ asset('assets/images/SIMCERIA.png') }}" alt="SIM Ceria"
+                    <img src="{{ asset('assets/images/SIMCERIA.png') }}" alt="Aplikasi SIM Ceria"
                         class="mx-auto rounded-lg shadow-lg max-w-full h-auto">
                 </div>
 
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Fitur Unggulan</h2>
-                <ul class="list-disc pl-5 space-y-2 mb-4">
-                    <li><strong>Informasi Lengkap</strong>: Tentang jenis-jenis SIM, syarat, proses penerbitan dan
-                        perpanjangan.</li>
-                    <li><strong>Panduan Proses</strong>: Alur dan dokumen yang diperlukan, tanpa harus datang ke kantor
-                        polisi terlebih dahulu.</li>
-                    <li><strong>Estimasi Biaya</strong>: Menyediakan informasi transparan soal biaya administrasi.</li>
-                    <li><strong>Jadwal SIM Keliling</strong>: Lokasi dan waktu layanan SIM Keliling di wilayah
-                        Tulungagung.</li>
-                    <li><strong>Pendaftaran SIM Online</strong>: Daftar SIM baru atau perpanjangan secara daring lewat
-                        aplikasi Android.</li>
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Fitur Utama</h2>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>Pendaftaran Online:</strong> Memungkinkan pemohon untuk mendaftar kapan saja dan di mana
+                        saja.</li>
+                    <li><strong>Ujian Teori Online:</strong> Terintegrasi dengan tes psikologi dan dapat diakses melalui
+                        aplikasi.</li>
+                    <li><strong>E-Book Modul:</strong> Materi pembelajaran ujian teori SIM yang dapat diunduh.</li>
                 </ul>
 
-                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Tujuan & Manfaat</h2>
-                <p class="mb-4">
-                    Aplikasi ini tidak hanya sebagai pusat informasi, tetapi juga sebagai kanal komunikasi antara
-                    masyarakat dan petugas Satlantas. Pengguna dapat menerima update reguler seperti:
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Alur Penggunaan</h2>
+                <p class="mb-6">
+                    Pemohon cukup mengunduh aplikasi, melakukan pendaftaran, dan mengikuti ujian teori secara online.
+                    Jika lulus, pemohon akan menerima barcode yang digunakan untuk melanjutkan ujian praktik di Satpas
+                    Polres Tulungagung.
                 </p>
-                <ul class="list-disc pl-5 space-y-2 mb-6">
-                    <li>Aturan terbaru seputar lalu lintas.</li>
-                    <li>Tips keselamatan berkendara.</li>
-                    <li>Pengumuman penting layanan SIM.</li>
-                </ul>
+
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Tujuan Inovasi</h2>
                 <p>
-                    Dengan kehadiran SIM Ceria, masyarakat diharapkan dapat lebih cepat dan mudah dalam mengakses
-                    layanan SIM, sekaligus meningkatkan kesadaran berlalu lintas serta transparansi pelayanan publik.
+                    Aplikasi <strong>SIM Ceria</strong> diharapkan dapat mempermudah masyarakat, khususnya kaum
+                    milenial, dalam mengurus SIM dengan proses yang lebih cepat, efisien, dan transparan, serta
+                    mengurangi praktik percaloan.
                 </p>
             </div>
         </div>
     </main>
 
-    {{-- FOOTER --}}
     <footer class="bg-black text-gray-300 pt-10 pb-6">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-6 mb-6" data-aos="fade-up">
@@ -159,7 +180,6 @@
             </div>
         </div>
     </footer>
-
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

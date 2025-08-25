@@ -8,32 +8,49 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             padding-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 20px;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
-    {{-- HEADER --}}
-    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
-        <div class="container mx-auto px-4 py-2">
-            <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-12">
-                    <div>
+    <header x-data="{ open: false }" class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                <div class="flex items-center space-x-4 min-w-0">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12 flex-shrink-0">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim"
+                        class="h-12 flex-shrink-0">
+                    <div class="hidden sm:block">
                         <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
                     </div>
                 </div>
-                <div class="text-right text-xs hidden md:block">
+                <div class="text-right text-xs hidden md:block flex-shrink-0 ml-4">
                     <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
                     <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
                 </div>
+                <div class="md:hidden flex-shrink-0 ml-4">
+                    <button @click="open = !open" class="text-white focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <nav class="flex justify-center items-center pt-3">
+            <nav class="hidden md:flex justify-center items-center pt-3 pb-2">
                 <ul class="flex space-x-6 text-sm font-semibold">
                     <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
                     <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
@@ -43,6 +60,16 @@
                     <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
                 </ul>
             </nav>
+        </div>
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-black border-t border-gray-700" x-transition>
+            <ul class="flex flex-col items-center py-4 space-y-4 text-sm font-semibold">
+                <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+                <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+            </ul>
         </div>
     </header>
 
@@ -57,53 +84,49 @@
 
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-gray-800 uppercase">TAR</h1>
-                <p class="text-gray-500 mt-2">Traffic Attitude Record</p>
+                <p class="text-gray-500 mt-2">Tilang Adem Ramah</p>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
             </div>
 
             <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg text-gray-700">
                 <p class="mb-6 leading-relaxed">
-                    <strong>Direktorat Lalu Lintas Polda Jawa Timur</strong> meluncurkan aplikasi <strong>Traffic
-                        Attitude Record (TAR)</strong> pada <strong>21 September 2020</strong> di Polres Tulungagung.
-                    TAR merupakan sistem database yang menyimpan riwayat pelanggaran dan kecelakaan lalu lintas, serta
-                    terintegrasi secara online dengan <strong>SKCK Online</strong>, <strong>SIM Ceria</strong>, dan
-                    aplikasi <strong>Traffic Accident Claim System (TACS)</strong> milik Polres Tulungagung.
+                    <strong>TAR (Tilang Adem Ramah)</strong> adalah program penindakan pelanggaran lalu lintas yang
+                    mengedepankan pendekatan humanis dan edukatif. Tujuannya bukan hanya menghukum, tetapi juga
+                    membangun kesadaran hukum di masyarakat.
                 </p>
 
                 {{-- GAMBAR INOVASI --}}
                 <div class="my-8 text-center">
-                    <img src="{{ asset('assets/images/TAR.png') }}" alt="TAR Polres Tulungagung"
+                    <img src="{{ asset('assets/images/TAR.png') }}" alt="TAR"
                         class="mx-auto rounded-lg shadow-lg max-w-full h-auto">
                 </div>
 
-                <p class="mb-4">
-                    Aplikasi TAR mempermudah proses administrasi seperti pembuatan dan perpanjangan SIM, pengurusan
-                    SKCK, serta memberikan kemudahan bagi petugas dalam memonitor pelanggar lalu lintas secara <em>real
-                        time</em>. Data dari TAR menjadi input penting pada pendaftaran SIM Ceria dan pencantuman
-                    keterangan di SKCK.
-                </p>
-
-                <p class="mb-4">Selain itu, TAR menunjang berbagai kebutuhan, seperti:</p>
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Metode Pelaksanaan</h2>
                 <ul class="list-disc pl-5 space-y-2 mb-6">
-                    <li>Monitoring dan evaluasi sistem secara real time.</li>
-                    <li>Pendukung forensik kepolisian dan pencegahan kejahatan secara teknologi.</li>
-                    <li>Menunjukkan algoritma Road Safety dan mendukung pelayanan publik yang cepat dan transparan.</li>
-                    <li>Integrasi dengan sistem digital nasional seperti ERP, e-Parking, e-SAMSAT, dan E-TLE.</li>
-                    <li>Meningkatkan akuntabilitas dan transparansi pada masyarakat serta mendukung reformasi birokrasi
-                        dan inisiatif antikorupsi.</li>
-                    <li>Menjadi landasan membangun Polantas yang profesional dan mendorong budaya tertib berlalu lintas.
-                    </li>
+                    <li><strong>Sapa dan Senyum:</strong> Petugas diwajibkan untuk menyapa pelanggar dengan ramah dan
+                        memberikan senyuman.</li>
+                    <li><strong>Edukasi Pelanggaran:</strong> Menjelaskan jenis pelanggaran yang dilakukan dan potensi
+                        bahayanya bagi diri sendiri dan orang lain.</li>
+                    <li><strong>Penindakan Simpatik:</strong> Proses tilang dilakukan dengan tenang dan tanpa arogansi,
+                        sambil memberikan pemahaman.</li>
                 </ul>
 
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Sasaran Program</h2>
+                <p class="mb-6">
+                    Program ini menyasar semua pengguna jalan, dengan harapan dapat mengubah persepsi negatif masyarakat
+                    terhadap polisi lalu lintas dan meningkatkan kepatuhan secara sukarela.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Dampak yang Diharapkan</h2>
                 <p>
-                    Secara keseluruhan, peluncuran TAR diharapkan dapat memberikan kemudahan layanan publik, memperkuat
-                    sistem integrasi data lalu lintas, serta meningkatkan budaya disiplin berlalu lintas di masyarakat.
+                    Melalui pendekatan <strong>TAR</strong>, diharapkan terjalin hubungan yang lebih harmonis antara
+                    polisi dan masyarakat, serta terciptanya budaya tertib berlalu lintas yang didasari oleh kesadaran,
+                    bukan paksaan.
                 </p>
             </div>
         </div>
     </main>
 
-    {{-- FOOTER --}}
     <footer class="bg-black text-gray-300 pt-10 pb-6">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-6 mb-6" data-aos="fade-up">
