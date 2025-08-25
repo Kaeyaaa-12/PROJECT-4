@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div
-                    class="hidden md:flex absolute z-20 bottom-0 inset-x-0 md:inset-x-auto md:right-0 pointer-events-none justify-center md:block">
+                    class="hidden md:flex absolute z-20 bottom-0 inset-x-0 md:inset-x-auto md:right-0 pointer-events-none justify-center">
                     <div class="relative pointer-events-auto">
                         <img src="{{ asset('assets/images/Kapolres.png') }}" alt="Foto Kapolres"
                             class="object-contain drop-shadow-lg h-[55vh] md:h-[80vh]" style="max-height: 700px;">
