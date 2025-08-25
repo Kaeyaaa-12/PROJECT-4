@@ -8,37 +8,64 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         .hero-bg {
             background-image: url("{{ asset('assets/images/Background.png') }}");
         }
 
-        /* Memberi ruang di body untuk fixed header yang lebih besar */
+        html,
         body {
-            /* Perkiraan tinggi header baru: sekitar 148px */
-            padding-top: 148px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            padding-top: 116px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
-    <header class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
-        <div class="container mx-auto px-4 py-2">
-            <div class="flex justify-between items-center border-b border-gray-600 pb-2">
-                <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12">
-                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim" class="h-12">
-                    <div>
+    <header x-data="{ open: false }" class="bg-black text-white fixed top-0 left-0 right-0 z-30 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-2 border-b border-gray-600">
+                <div class="flex items-center space-x-4 min-w-0">
+                    <img src="{{ asset('assets/images/lambang.png') }}" alt="Logo Polri" class="h-12 flex-shrink-0">
+                    <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Logo Polda Jatim"
+                        class="h-12 flex-shrink-0">
+                    <div class="hidden sm:block">
                         <h1 class="text-sm font-bold uppercase">Kepolisian Negara Republik Indonesia</h1>
                         <h2 class="text-xs uppercase">Daerah Jawa Timur - Resor Tulungagung</h2>
                     </div>
                 </div>
-                <div class="text-right text-xs hidden md:block">
+                <div class="text-right text-xs hidden md:block flex-shrink-0 ml-4">
                     <p>Jl. Ahmad Yani Timur No.9, Bago, Kec. Tulungagung,</p>
                     <p>Kabupaten Tulungagung, Jawa Timur 66212</p>
                 </div>
+                <div class="md:hidden flex-shrink-0 ml-4">
+                    <button @click="open = !open" class="text-white focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <nav class="flex justify-center items-center pt-3">
+            <nav class="hidden md:flex justify-center items-center pt-3 pb-2">
                 <ul class="flex space-x-6 text-sm font-semibold">
                     <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
                     <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
@@ -49,20 +76,27 @@
                 </ul>
             </nav>
         </div>
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-black border-t border-gray-700" x-transition>
+            <ul class="flex flex-col items-center py-4 space-y-4 text-sm font-semibold">
+                <li><a href="{{ url('/') }}" class="hover:text-yellow-400">BERANDA</a></li>
+                <li><a href="{{ url('/#layanan-umum') }}" class="hover:text-yellow-400">LAYANAN</a></li>
+                <li><a href="{{ url('/#berita') }}" class="hover:text-yellow-400">BERITA</a></li>
+                <li><a href="{{ route('profil.publik') }}" class="hover:text-yellow-400">PROFIL</a></li>
+                <li><a href="{{ route('inovasi.index') }}" class="hover:text-yellow-400">INOVASI</a></li>
+                <li><a href="{{ route('faq.index') }}" class="hover:text-yellow-400">FAQ</a></li>
+            </ul>
+        </div>
     </header>
 
     <div>
-
-        <main class="relative h-screen -mt-[148px]">
-            <div class="h-full flex items-center justify-center hero-bg bg-cover bg-center">
+        <main class="relative -mt-[116px]">
+            <div class="relative min-h-screen md:h-screen flex items-center justify-center hero-bg bg-cover bg-center">
                 <div class="absolute inset-0 bg-black opacity-40"></div>
-
                 <div class="relative z-10 container mx-auto px-4 text-center text-white" data-aos="fade-in">
                     <h1 class="text-4xl lg:text-5xl font-bold uppercase">Inovasi Polres Tulungagung</h1>
                     <p class="mt-4 text-lg lg:text-xl max-w-3xl mx-auto">Berbagai inovasi layanan publik untuk kemudahan
                         dan kenyamanan masyarakat Kabupaten Tulungagung.</p>
                 </div>
-
             </div>
         </main>
 
@@ -114,7 +148,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 mt-20" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">03</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">POS DIGITAL ASTUTI</h3>
@@ -134,7 +168,8 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20" data-aos="fade-left">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 mt-20"
+                    data-aos="fade-left">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">04</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">ASTUTI MOBILE</h3>
@@ -154,7 +189,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 mt-20" data-aos="fade-right">
                     <div class="w-full md:w-1/2">
                         <div class="text-7xl lg:text-8xl font-bold text-yellow-400 mb-2">05</div>
                         <h3 class="text-4xl font-bold text-gray-800 tracking-wider mb-4">TACS</h3>
@@ -270,13 +305,11 @@
             </div>
         </footer>
     </div>
-    {{-- Menambahkan AOS JS --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi AOS
         AOS.init({
-            duration: 800, // durasi animasi dalam ms
-            once: false, // apakah animasi hanya terjadi sekali
+            duration: 800,
+            once: false,
         });
     </script>
 </body>
