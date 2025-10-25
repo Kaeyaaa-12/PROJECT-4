@@ -13,10 +13,12 @@ use App\Http\Controllers\Admin\AduanController;
 use App\Http\Controllers\Admin\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController as AdminPasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController as AdminNewPasswordController;
+use App\Http\Controllers\GeminiChatController;
 
 //RUTE PUBLIK
 Route::get('/', [HomeController::class, 'index'])->name('landing');
-Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+Route::get('/layanan-informasi', [FaqController::class, 'index'])->name('faq.index');
+Route::post('/chatbot/chat', [GeminiChatController::class, 'generateContent'])->name('chatbot.generate');
 
 //RUTE LAYANAN
 Route::prefix('layanan')->name('layanan.')->group(function () {
