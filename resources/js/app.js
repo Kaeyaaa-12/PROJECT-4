@@ -1,10 +1,10 @@
 import "./bootstrap";
 
 import Alpine from "alpinejs";
-import axios from "axios"; // Wajib: Import Axios
+import axios from "axios";
 
 window.Alpine = Alpine;
-window.axios = axios; // Daftarkan Axios secara global
+window.axios = axios;
 
 document.addEventListener("alpine:init", () => {
     Alpine.data("chatBot", () => ({
@@ -12,8 +12,6 @@ document.addEventListener("alpine:init", () => {
         newMessage: "",
         isLoading: false,
         error: "",
-
-        // Dipanggil saat x-init pada div utama
         initChat() {
             this.clearChat();
             this.scrollToBottom();
@@ -24,7 +22,7 @@ document.addEventListener("alpine:init", () => {
                 {
                     id: 1,
                     role: "model",
-                    text: "Halo! Saya Chatbot AI Polres Tulungagung, siap membantu Anda dengan informasi layanan, SKCK, SIM, aduan, dan inovasi Polres. Ada yang bisa saya bantu?",
+                    text: "Halo! Saya **GAYATRI AI** Polres Tulungagung, siap membantu Anda dengan informasi layanan, SKCK, SIM, aduan, dan inovasi Polres. Ada yang bisa saya bantu?",
                 },
             ];
             this.newMessage = "";
@@ -40,8 +38,6 @@ document.addEventListener("alpine:init", () => {
             this.newMessage = "";
             this.error = "";
             this.isLoading = true;
-
-            // 1. Tambahkan pesan pengguna ke riwayat
             this.messages.push({
                 id: Date.now(),
                 role: "user",
@@ -50,18 +46,14 @@ document.addEventListener("alpine:init", () => {
             this.$nextTick(() => this.scrollToBottom());
 
             try {
-                // 2. Siapkan riwayat chat untuk API
                 const chatHistory = this.messages
                     .slice(1)
                     .map((msg) => ({ role: msg.role, text: msg.text }));
 
-                // 3. Panggil API melalui endpoint Laravel yang terdaftar di web.php
                 const response = await axios.post("/chatbot/chat", {
                     message: userText,
                     history: chatHistory,
                 });
-
-                // 4. Tambahkan balasan model
                 this.messages.push({
                     id: Date.now() + 1,
                     role: "model",
@@ -69,7 +61,6 @@ document.addEventListener("alpine:init", () => {
                 });
             } catch (e) {
                 console.error("Chat API Error:", e);
-                // Tambahkan pesan error jika request gagal
                 const errorMessage =
                     e.response && e.response.data && e.response.data.reply
                         ? e.response.data.reply
@@ -89,7 +80,6 @@ document.addEventListener("alpine:init", () => {
         scrollToBottom() {
             const container = this.$refs.messagesContainer;
             if (container) {
-                // Pastikan scroll terjadi setelah DOM diperbarui
                 setTimeout(() => {
                     container.scrollTop = container.scrollHeight;
                 }, 50);

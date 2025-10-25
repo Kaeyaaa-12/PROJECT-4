@@ -34,6 +34,13 @@
                 padding-top: 80px;
             }
         }
+
+        .ai-profile-img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 9999px;
+        }
     </style>
 </head>
 
@@ -89,11 +96,11 @@
     </header>
 
     <main class="relative -mt-[116px]">
-        {{-- Ini adalah asumsi HERO IMAGE yang sudah ada, JANGAN UBAH --}}
         <div class="relative min-h-screen md:h-screen flex items-center justify-center hero-bg bg-cover bg-center">
             <div class="absolute inset-0 bg-black opacity-40"></div>
             <div class="relative z-10 container mx-auto px-4 text-center text-white" data-aos="fade-in">
                 <h1 class="text-4xl lg:text-5xl font-bold uppercase">LAYANAN INFORMASI</h1>
+                {{-- UBAH: Mengganti nama Chatbot di hero section --}}
                 <p class="mt-4 text-lg lg:text-xl max-w-3xl mx-auto">Tanyakan segala hal tentang Polres Tulungagung
                     melalui GAYATRI AI</p>
             </div>
@@ -109,8 +116,6 @@
                 <p class="text-gray-500 mt-2">Layanan chat real-time untuk menjawab pertanyaan Anda secara instan.</p>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4"></div>
             </div>
-
-            {{-- x-data="chatBot()" harus berada di sini --}}
             <div x-data="chatBot()" x-init="initChat()"
                 class="max-w-3xl mx-auto bg-white rounded-lg shadow-2xl flex flex-col h-[600px] border border-gray-200">
 
@@ -120,31 +125,38 @@
                         <h3 class="font-bold">GAYATRI AI</h3>
                     </div>
                     <button @click="clearChat()" class="text-sm text-gray-400 hover:text-yellow-400">
-                        <i class="fas fa-trash-alt mr-1"></i> Mulai Baru
+                        <i class="fas fa-sync-alt mr-1"></i> Mulai Baru
                     </button>
                 </div>
 
                 <div id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col-reverse"
                     x-ref="messagesContainer">
-
-                    <div x-show="isLoading" class="flex justify-start">
+                    <div x-show="isLoading" class="flex justify-start items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <img src="{{ asset('assets/images/gayatriai.png') }}" alt="GAYATRI AI"
+                                class="ai-profile-img">
+                        </div>
                         <div
                             class="bg-gray-100 text-gray-500 rounded-br-lg rounded-tr-lg rounded-tl-md p-3 max-w-[85%]">
                             <span class="inline-flex items-center">
                                 <span class="animate-bounce">.</span><span class="animate-bounce"
                                     style="animation-delay: 100ms">.</span><span class="animate-bounce"
                                     style="animation-delay: 200ms">.</span>
-                            </span>
                         </div>
                     </div>
-
                     <template x-for="message in messages.slice().reverse()" :key="message.id">
                         <div
                             :class="{
                                 'flex justify-end': message.role === 'user',
-                                'flex justify-start': message
-                                    .role === 'model'
+                                'flex justify-start space-x-3 items-start': message.role === 'model'
                             }">
+                            <template x-if="message.role === 'model'">
+                                <div class="flex-shrink-0">
+                                    <img src="{{ asset('assets/images/gayatriai.png') }}" alt="GAYATRI AI"
+                                        class="ai-profile-img">
+                                </div>
+                            </template>
+
                             <div
                                 :class="{
                                     'bg-yellow-400 text-gray-900 rounded-bl-lg rounded-tl-lg rounded-br-md p-3 max-w-[85%] shadow': message
@@ -152,7 +164,6 @@
                                     'bg-gray-100 text-gray-800 rounded-br-lg rounded-tr-lg rounded-tl-md p-3 max-w-[85%] shadow whitespace-pre-wrap': message
                                         .role === 'model'
                                 }">
-                                {{-- Ganti markup Markdown menjadi HTML --}}
                                 <p x-html="message.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')"></p>
                             </div>
                         </div>
