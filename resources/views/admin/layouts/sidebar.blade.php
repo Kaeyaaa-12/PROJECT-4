@@ -9,7 +9,8 @@
             <img src="{{ asset('assets/images/lambang.png') }}" alt="Lambang Polri" class="h-14 w-auto">
             <img src="{{ asset('assets/images/poldajatim.png') }}" alt="Polda Jatim" class="h-14 w-auto">
         </div>
-        <h1 class="text-xl font-bold tracking-wider text-yellow-400">POLRESTA</h1>
+        <h1 class="text-xl font-bold tracking-wider text-yellow-400">POLRES</h1>
+        <h1 class="text-xl font-bold tracking-wider text-yellow-400">TULUNGAGUNG</h1>
     </div>
 
     {{-- Menu Navigasi --}}
