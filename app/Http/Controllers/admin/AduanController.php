@@ -19,6 +19,21 @@ class AduanController extends Controller
     }
 
     /**
+     * Menampilkan peta interaktif semua aduan.
+     */
+    public function map() // NEW METHOD
+    {
+        // Ambil semua aduan yang memiliki koordinat
+        $aduans = Aduan::whereNotNull('latitude')
+                        ->whereNotNull('longitude')
+                        ->latest()
+                        ->get();
+
+        // Data akan di-pass ke view untuk ditampilkan di peta
+        return view('admin.aduan.map', compact('aduans'));
+    }
+
+    /**
      * Menampilkan detail satu aduan.
      */
     public function show(Aduan $aduan)

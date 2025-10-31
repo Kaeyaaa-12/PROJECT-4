@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {{-- Leaflet CSS --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         body {
             padding-top: 50px;
@@ -18,6 +21,16 @@
             body {
                 padding-top: 20px;
             }
+        }
+
+        /* Style untuk peta */
+        #map-user {
+            height: 400px;
+            width: 100%;
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            z-index: 10;
+            /* Penting untuk interaksi peta */
         }
     </style>
 </head>
@@ -197,7 +210,7 @@
                                     <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div>
+                            {{-- <div>
                                 <label for="lokasi_kejadian"
                                     class="block mb-2 text-sm font-medium text-gray-700">Lokasi
                                     Kejadian</label>
@@ -208,7 +221,7 @@
                                 @error('lokasi_kejadian')
                                     <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div>
@@ -219,6 +232,53 @@
                                 required>{{ old('isi_laporan') }}</textarea>
                             @error('isi_laporan')
                                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            {{-- <div>
+                                <label for="waktu_kejadian" class="block mb-2 text-sm font-medium text-gray-700">Waktu
+                                    Kejadian</label>
+                                <input type="datetime-local" id="waktu_kejadian" name="waktu_kejadian"
+                                    value="{{ old('waktu_kejadian') }}"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
+                                    required>
+                                @error('waktu_kejadian')
+                                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                                @enderror
+                            </div> --}}
+                            {{-- UBAH: Input Lokasi Kejadian dengan Map --}}
+                            <div>
+                                <label for="lokasi_kejadian_text"
+                                    class="block mb-2 text-sm font-medium text-gray-700">Lokasi
+                                    Kejadian</label>
+                                <input type="text" id="lokasi_kejadian_text"
+                                    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 cursor-default"
+                                    placeholder="Gunakan Lokasi Saya atau klik pada peta..."
+                                    value="{{ old('lokasi_kejadian') }}" readonly required>
+
+                                {{-- Hidden fields untuk mengirim data koordinat dan alamat yang di-reverse-geocode --}}
+                                <input type="hidden" id="lokasi_kejadian" name="lokasi_kejadian"
+                                    value="{{ old('lokasi_kejadian') }}" required>
+                                <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}"
+                                    required>
+                                <input type="hidden" id="longitude" name="longitude"
+                                    value="{{ old('longitude') }}" required>
+                            </div>
+                        </div>
+
+                        {{-- Map interaktif --}}
+                        <div class="mt-4">
+                            <button type="button" id="use-my-location"
+                                class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors shadow-md mb-4">
+                                <i class="fas fa-crosshairs mr-2"></i> Gunakan Lokasi Saya Sekarang
+                            </button>
+                            <div id="map-user"></div>
+                            <p class="mt-2 text-xs text-gray-500">
+                                <i class="fas fa-info-circle mr-1"></i> Klik pada peta atau seret marker untuk menandai
+                                lokasi kejadian.
+                            </p>
+                            @error('latitude')
+                                <p class="mt-1 text-xs text-red-500">Lokasi kejadian wajib ditandai pada peta.</p>
                             @enderror
                         </div>
 
@@ -311,6 +371,110 @@
         AOS.init({
             duration: 800,
             once: true,
+        });
+    </script>
+
+    {{-- Leaflet JS --}}
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    {{-- SCRIPT LEAFLET UNTUK FORM PENGADUAN --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let map;
+            let marker;
+            const defaultPos = [-8.0673, 111.9004]; // Default: Polres Tulungagung
+
+            // Inisialisasi peta
+            map = L.map('map-user').setView(defaultPos, 13);
+
+            // Tambahkan layer OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Ambil nilai lama jika ada
+            const oldLat = document.getElementById('latitude').value;
+            const oldLng = document.getElementById('longitude').value;
+
+            if (oldLat && oldLng) {
+                const oldPos = [parseFloat(oldLat), parseFloat(oldLng)];
+                map.setView(oldPos, 15);
+                placeMarker(oldPos, map);
+            }
+
+            // Reverse Geocoding menggunakan Nominatim API (layanan OpenStreetMap)
+            function reverseGeocode(latLng) {
+                // Perhatikan: Nominatim memiliki batasan penggunaan wajar, jangan gunakan berlebihan
+                const url =
+                    `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latLng.lat}&lon=${latLng.lng}&zoom=18&addressdetails=1`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Gunakan nama tampilan lengkap atau fallback ke koordinat
+                        const address = data.display_name ||
+                            `Koordinat: ${latLng.lat.toFixed(6)}, ${latLng.lng.toFixed(6)}`;
+                        document.getElementById('lokasi_kejadian_text').value = address;
+                        document.getElementById('lokasi_kejadian').value = address;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching geocode:', error);
+                        const fallbackAddress = `Koordinat: ${latLng.lat.toFixed(6)}, ${latLng.lng.toFixed(6)}`;
+                        document.getElementById('lokasi_kejadian_text').value = fallbackAddress;
+                        document.getElementById('lokasi_kejadian').value = fallbackAddress;
+                    });
+            }
+
+            // Fungsi untuk menempatkan marker dan memperbarui field
+            function placeMarker(latLng, map) {
+                if (marker) {
+                    marker.setLatLng(latLng); // Pindahkan marker yang sudah ada
+                } else {
+                    marker = L.marker(latLng, {
+                        draggable: true
+                    }).addTo(map);
+                    marker.on('dragend', function(e) {
+                        updateLocationFields(e.target.getLatLng());
+                    });
+                }
+                updateLocationFields(latLng);
+            }
+
+            // Fungsi untuk memperbarui field hidden dan input teks
+            function updateLocationFields(latLng) {
+                document.getElementById('latitude').value = latLng.lat;
+                document.getElementById('longitude').value = latLng.lng;
+                reverseGeocode(latLng);
+            }
+
+            // Event listener klik pada peta
+            map.on('click', function(e) {
+                placeMarker(e.latlng, map);
+                map.setView(e.latlng, 15);
+            });
+
+            // Listener untuk tombol "Gunakan Lokasi Saya"
+            document.getElementById('use-my-location').addEventListener('click', () => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const latLng = L.latLng(position.coords.latitude, position.coords
+                                .longitude);
+                            placeMarker(latLng, map);
+                            map.setView(latLng, 16);
+                        },
+                        () => {
+                            alert(
+                                "Error: Layanan geolokasi gagal atau ditolak. Silakan klik pada peta untuk memilih lokasi."
+                                );
+                        }
+                    );
+                } else {
+                    alert(
+                        "Browser Anda tidak mendukung layanan geolokasi. Silakan klik pada peta untuk memilih lokasi."
+                        );
+                }
+            });
         });
     </script>
 </body>

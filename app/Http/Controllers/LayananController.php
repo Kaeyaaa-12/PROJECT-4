@@ -30,6 +30,8 @@ class LayananController extends Controller
             'jenis_aduan' => 'required|string|max:255',
             'waktu_kejadian' => 'required|date',
             'lokasi_kejadian' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'isi_laporan' => 'required|string',
             'bukti' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048', // Maks 2MB
         ]);
@@ -44,6 +46,8 @@ class LayananController extends Controller
             'jenis_aduan' => $request->jenis_aduan,
             'waktu_kejadian' => $request->waktu_kejadian,
             'lokasi_kejadian' => $request->lokasi_kejadian,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'isi_laporan' => $request->isi_laporan,
             'bukti' => $path,
             'status' => 'Baru', // Status default saat aduan dibuat

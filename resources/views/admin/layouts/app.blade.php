@@ -15,6 +15,9 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
+
+    {{-- NEW: Stack untuk CSS kustom (misalnya Leaflet CSS) --}}
+    @stack('styles')
 </head>
 
 <body class="bg-gray-800 text-gray-200 font-sans">
@@ -37,6 +40,9 @@
             </main>
         </div>
     </div>
+
+    {{-- NEW: Stack untuk JavaScript kustom (misalnya Leaflet JS dan script peta) --}}
+    @stack('scripts')
 </body>
 
 </html>

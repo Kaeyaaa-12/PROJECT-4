@@ -46,6 +46,14 @@
             <span class="material-symbols-outlined mr-3">report</span>
             Laporan Aduan
         </a>
+
+        {{-- Link Peta Aduan (NEW LINK) --}}
+        <a href="{{ route('admin.aduan.map') }}"
+            class="flex items-center px-4 py-2.5 text-sm rounded-lg transition duration-200
+                  {{ request()->routeIs('admin.aduan.map') ? 'font-bold bg-yellow-400 text-gray-900' : 'font-medium text-gray-300 hover:bg-gray-800' }}">
+            <span class="material-symbols-outlined mr-3">map</span>
+            Peta Aduan
+        </a>
     </nav>
 
     {{-- Bagian User Info & Logout --}}

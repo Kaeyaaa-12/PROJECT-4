@@ -94,6 +94,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('beritas', BeritaController::class);
         Route::resource('galleries', GalleryController::class);
         Route::get('aduan', [AduanController::class, 'index'])->name('aduan.index');
+        Route::get('aduan/map', [AduanController::class, 'map'])->name('aduan.map');
         Route::get('aduan/{aduan}', [AduanController::class, 'show'])->name('aduan.show');
         Route::delete('aduan/{aduan}', [AduanController::class, 'destroy'])->name('aduan.destroy');
         Route::patch('aduan/{aduan}/status', [AduanController::class, 'updateStatus'])->name('aduan.updateStatus');

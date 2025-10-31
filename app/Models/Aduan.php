@@ -15,7 +15,9 @@ class Aduan extends Model
         'nama',
         'jenis_aduan',
         'waktu_kejadian',
-        'lokasi_kejadian',
+        'lokasi_kejadian', // Akan menyimpan alamat yang dibaca manusia
+        'latitude',        // NEW: Menyimpan Latitude
+        'longitude',       // NEW: Menyimpan Longitude
         'isi_laporan',
         'bukti',
         'status',
